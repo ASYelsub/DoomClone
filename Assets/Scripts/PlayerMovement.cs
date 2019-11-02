@@ -38,27 +38,19 @@ public class PlayerMovement : MonoBehaviour
         if(Mathf.Abs(mouseY) > 0){
             walkTime += Time.deltaTime;
         }
-        cameraTransform.parent.position = new Vector3(cameraTransform.parent.position.x, defaultHeight + Mathf.Cos(walkTime*5f)*0.8f, cameraTransform.parent.position.z);
+        
         if(Input.GetKeyDown(KeyCode.Mouse0)){
             Debug.Log(mouseY);
         }
         
-
         if(Input.GetKey(KeyCode.W)){
             //Vector3 keyForward = new Vector3(forward);
             cameraTransform.parent.position = cameraTransform.parent.position + cameraTransform.parent.forward;
+            walkTime += Time.deltaTime;
         }
-        /*if(Input.GetKeyUp(KeyCode.W)){
-            timerW--;
-            if(timerW > 0f){
-                cameraTransform.parent.position = cameraTransform.parent.position + cameraTransform.parent.forward;
-            }
-            else if(timerW <= 0f){
-                timerW = 40f;
-            }
-        }*/
         if(Input.GetKey(KeyCode.S)){
             cameraTransform.parent.position = cameraTransform.parent.position - cameraTransform.parent.forward;
+            walkTime += Time.deltaTime;
         }
         if(Input.GetKey(KeyCode.D)){
             cameraTransform.parent.Rotate(dRotate);
@@ -68,5 +60,6 @@ public class PlayerMovement : MonoBehaviour
             cameraTransform.parent.Rotate(aRotate);
             //cameraTransform.position = cameraTransform.position - cameraTransform.right;
         }
+        cameraTransform.parent.position = new Vector3(cameraTransform.parent.position.x, defaultHeight + Mathf.Cos(walkTime*5f)*0.8f, cameraTransform.parent.position.z);
     }
 }
