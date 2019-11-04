@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 6979969620089779651}
   - component: {fileID: 6979969620089779663}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyFrank
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c026d8b91d88a1745bb07a1304cdf0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movSpeed: 1
+  movSpeed: 2
   shootFrequency: 4
   HP: 3
   state: 0
