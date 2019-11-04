@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-        //public Transform playerTransform;
     Transform cameraTransform;
-    float timerW,timerA,timerS,timerD = 40f;
+    public float playerSpeed;
+    public float playerDashSpeed;
+    public float amp;
+    public float freq;
+    public float rotateImpact;
     float defaultHeight;
     float walkTime;
-    // Start is called before the first frame update
     void Start()
     {
         cameraTransform = GetComponent<Transform>();
         defaultHeight = cameraTransform.position.y;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -24,42 +27,35 @@ public class PlayerMovement : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y");
 
         Vector3 mouseRotate = new Vector3(0f,mouseX*10f,0f);
-        Vector3 dRotate = new Vector3(0f,1f,0f);
-        Vector3 aRotate = new Vector3(0f,-1f,0f);
+        Vector3 dRotate = new Vector3(0f,rotateImpact,0f);
+        Vector3 aRotate = new Vector3(0f,-rotateImpact,0f);
         
-        //cameraTransform.parent.Rotate(mouseRotate);​
+        cameraTransform.Rotate(mouseRotate);
 
-        // if(mouseY > 0){
-        //     cameraTransform.parent.position = cameraTransform.parent.position + cameraTransform.parent.forward*0.5f;            
-        // }
-        // if(mouseY < 0){
-        //     cameraTransform.parent.position = cameraTransform.parent.position - cameraTransform.parent.forward*0.5f;
-        // }
-        // if(Mathf.Abs(mouseY) > 0){
-        //     walkTime += Time.deltaTime;
-        // }
-        
-        // if(Input.GetKeyDown(KeyCode.Mouse0)){
-        //     Debug.Log(mouseY);
-        // }
-        
+        /*if(mouseY > 0){
+             cameraTransform.position = cameraTransform.position + cameraTransform.forward*playerDashSpeed;            
+        }
+        if(mouseY < 0){
+             cameraTransform.position = cameraTransform.position - cameraTransform.forward*playerDashSpeed;
+        }
+        if(Mathf.Abs(mouseY) > 0){
+             walkTime += Time.deltaTime;
+        }*/
         if(Input.GetKey(KeyCode.W)){
-            //Vector3 keyForward = new Vector3(forward);
-            cameraTransform.position = cameraTransform.position + cameraTransform.forward*0.2f;
+            
+            cameraTransform.position = cameraTransform.position + cameraTransform.forward*playerSpeed;
             walkTime += Time.deltaTime;
         }
         if(Input.GetKey(KeyCode.S)){
-            cameraTransform.position = cameraTransform.position - cameraTransform.forward*0.2f;
+            cameraTransform.position = cameraTransform.position - cameraTransform.forward*playerSpeed;
             walkTime += Time.deltaTime;
         }
         if(Input.GetKey(KeyCode.D)){
             cameraTransform.Rotate(dRotate);
-            //cameraTransform.position = cameraTransform.position + cameraTransform.right;
         }
         if(Input.GetKey(KeyCode.A)){
-            cameraTransform.Rotate(aRotate);
-            //cameraTransform.position = cameraTransform.position - cameraTransform.right;
+            cameraTransform.Rotate(aRotate);  
         }
-        //cameraTransform.parent.position = new Vector3(cameraTransform.parent.position.x, defaultHeight + Mathf.Cos(walkTime*5f)*0.8f, cameraTransform.parent.position.z);
+        cameraTransform.position = new Vector3(cameraTransform.position.x, defaultHeight + Mathf.Cos(walkTime*freq)*amp, cameraTransform.position.z);
     }
 }
