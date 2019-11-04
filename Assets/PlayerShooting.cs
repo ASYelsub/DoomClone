@@ -6,7 +6,7 @@ public class PlayerShooting : MonoBehaviour
 {
     public List<GameObject> enemyList;  // the list of enemy
     public LayerMask obstacleLayer; // the layer of obstacles
-    void FixedUpdate()
+    void Update()
     {
         DetectNShoot();
     }
@@ -26,8 +26,10 @@ public class PlayerShooting : MonoBehaviour
                                                                 //it returns the angle between player and enemy regardless y parameter
                                                                 // if it is within 3 degrees, 
 
-                if(!Physics.Linecast(transform.position,enemy.transform.position,obstacleLayer)){ // it detects if there are obstacles between them
-                    Debug.Log("Hit");
+                if(Input.GetKeyDown(KeyCode.Mouse0)
+                    &&!Physics.Linecast(transform.position,enemy.transform.position,obstacleLayer)){ 
+                        // it detects if there are obstacles between them
+                    Debug.Log("Detect");
                 }
             }
         }
