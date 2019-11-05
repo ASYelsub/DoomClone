@@ -14,11 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GunFire: {fileID: 0}
   SelectedWeapon: {fileID: 0}
-  AS: {fileID: 0}
-  Shot: {fileID: 0}
-  FireSpeed: 0
+  FireSpeed: 0.5
   Automatic: 0
-  Spread: 0
   bulletNumber: 0
   bulletVel: 0
   Damage: 0

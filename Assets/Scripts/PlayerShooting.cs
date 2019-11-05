@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +7,24 @@ public class PlayerShooting : MonoBehaviour
 {
     public List<GameObject> enemyList;  // the list of enemy
     public LayerMask obstacleLayer; // the layer of obstacles
+    private float gunCoolDown;
+    public Guns myGun; 
+    
+   
+
     void Update()
     {
+       // gunCoolDown = myGun.FireSpeed; 
+     
+        if (gunCoolDown > 0)
+        {
+            gunCoolDown -= Time.deltaTime; 
+        }
+        
+        
+        
+       
+        
         DetectNShoot();
     }
 
@@ -27,9 +44,16 @@ public class PlayerShooting : MonoBehaviour
                                                                 // if it is within 3 degrees, 
 
                 if(Input.GetKeyDown(KeyCode.Mouse0)
-                    &&!Physics.Linecast(transform.position,enemy.transform.position,obstacleLayer)){ 
+                    &&!Physics.Linecast(transform.position,enemy.transform.position,obstacleLayer) &&  gunCoolDown <= 0){ 
+                  
+
                         // it detects if there are obstacles between them
                     Debug.Log("Detect");
+                    
+                        gunCoolDown = myGun.FireSpeed;
+                        Update();
+                    
+                    
                 }
             }
         }
