@@ -109,3 +109,45 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+  rotateImpact: 3
+  freq: 16.74
+  amp: 0.5
+  playerDashSpeed: 0.7
+  playerSpeed: 1
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_Script: {fileID: 11500000, guid: 310a87eadff49c34c826ab010f937e99, type: 3}
+  m_EditorHideFlags: 0
+  m_Enabled: 1
+  m_GameObject: {fileID: 8985324738816466059}
+  m_PrefabAsset: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+MonoBehaviour:
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_Script: {fileID: 11500000, guid: db0556e327cc3401887c6112b11ab275, type: 3}
+  m_EditorHideFlags: 0
+  m_Enabled: 1
+  m_GameObject: {fileID: 8985324738816466059}
+  m_PrefabAsset: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_ObjectHideFlags: 0
+MonoBehaviour:
+    m_Bits: 0
+    serializedVersion: 2
+  obstacleLayer:
+  enemyList: []
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_Script: {fileID: 11500000, guid: 60a3291181fe44906bfec9a84c8ddf42, type: 3}
+  m_EditorHideFlags: 0
+  m_Enabled: 1
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985324738816466059}
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
