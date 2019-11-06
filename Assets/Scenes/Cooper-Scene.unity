@@ -665,6 +665,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1147175140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1870568350613222487, guid: cf56c7e3f6e064a3982616679a8d4a45,
+    type: 3}
+  m_PrefabInstance: {fileID: 186494327}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1202720102
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,7 +830,6 @@ GameObject:
   - component: {fileID: 1371029418}
   - component: {fileID: 1371029417}
   - component: {fileID: 1371029420}
-  - component: {fileID: 1371029421}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -912,24 +917,11 @@ MonoBehaviour:
   - {fileID: 711816006}
   - {fileID: 1410780511}
   - {fileID: 1224578992}
+  - {fileID: 1147175140}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 512
-  gunCoolDown: 0
   myGun: {fileID: 11400000, guid: 15711e8c00d134197b63fca22791257d, type: 2}
---- !u!114 &1371029421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371029416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 971dee1a4e13b46598f6b064eed89652, type: 2}
 --- !u!1 &1410780511 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1870568350613222487, guid: cf56c7e3f6e064a3982616679a8d4a45,
@@ -1158,10 +1150,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0556e327cc3401887c6112b11ab275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 1
+  playerSpeed: 0.3
   playerDashSpeed: 0.7
-  amp: 0.5
-  freq: 16.74
+  amp: 0.36
+  freq: 8
   rotateImpact: 3
 --- !u!136 &2015417629
 CapsuleCollider:

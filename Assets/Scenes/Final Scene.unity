@@ -535,7 +535,6 @@ GameObject:
   - component: {fileID: 304511031}
   - component: {fileID: 304511030}
   - component: {fileID: 304511029}
-  - component: {fileID: 304511028}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -557,19 +556,6 @@ Transform:
   m_Father: {fileID: 436146560}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &304511028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 304511026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 971dee1a4e13b46598f6b064eed89652, type: 2}
 --- !u!114 &304511029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,7 +733,7 @@ GameObject:
   - component: {fileID: 436146556}
   - component: {fileID: 436146562}
   m_Layer: 0
-  m_Name: Player (1)
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1530,7 +1516,7 @@ PrefabInstance:
     - target: {fileID: 6979969620089779657, guid: 1f14876b7202ef84988b8d6d84ce9dfb,
         type: 3}
       propertyPath: m_Name
-      value: EnemyFrank (1)
+      value: EnemyFrank
       objectReference: {fileID: 0}
     - target: {fileID: 6979969620089779660, guid: 1f14876b7202ef84988b8d6d84ce9dfb,
         type: 3}
@@ -1592,6 +1578,16 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 436146555}
+    - target: {fileID: 6979969620089779656, guid: 1f14876b7202ef84988b8d6d84ce9dfb,
+        type: 3}
+      propertyPath: movSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979969620089779656, guid: 1f14876b7202ef84988b8d6d84ce9dfb,
+        type: 3}
+      propertyPath: shootFrequency
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f14876b7202ef84988b8d6d84ce9dfb, type: 3}
 --- !u!1 &900172617 stripped
@@ -2599,7 +2595,7 @@ GameObject:
   - component: {fileID: 1271046875}
   - component: {fileID: 1271046874}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4321,7 +4317,7 @@ GameObject:
   - component: {fileID: 2129695006}
   - component: {fileID: 2129695005}
   m_Layer: 0
-  m_Name: EventSystem (1)
+  m_Name: 'EventSystem '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
