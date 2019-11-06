@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Guns : ScriptableObject
 {
-    public GameObject GunFire; 
+    
     public Sprite SelectedWeapon;
    // public AudioSource AS;
     //public AudioClip Shot; 
