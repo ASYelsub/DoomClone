@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BlueArmor
   m_EditorClassIdentifier: 
   health: {fileID: 0}
-  isArmor: 0
-  restoreHealth: 0
+  isArmor: 1
+  restoreHealth: 5
