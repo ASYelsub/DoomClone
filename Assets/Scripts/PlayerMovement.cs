@@ -12,6 +12,11 @@ public class PlayerMovement : MonoBehaviour
     public float rotateImpact;
     float defaultHeight;
     float walkTime;
+
+
+
+
+    //public GameObject Detect;
     void Start()
     {
         cameraTransform = GetComponent<Transform>();
@@ -22,7 +27,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        
+        //Debug.Log(Vector3.Distance(transform.position,Detect.transform.position));
+
+
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
 
@@ -56,6 +63,6 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.A)){
             cameraTransform.Rotate(aRotate);  
         }
-        cameraTransform.position = new Vector3(cameraTransform.position.x, defaultHeight + Mathf.Cos(walkTime*freq)*amp, cameraTransform.position.z);
+        //cameraTransform.position = new Vector3(cameraTransform.position.x, defaultHeight + Mathf.Cos(walkTime*freq)*amp, cameraTransform.position.z);
     }
 }
