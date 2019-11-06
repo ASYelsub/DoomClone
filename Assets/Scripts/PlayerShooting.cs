@@ -38,8 +38,8 @@ public class PlayerShooting : MonoBehaviour
             myPos.y = 0;
 
             Vector3 targetDir = enemyPos-myPos;             //this is the vector between enemy and player
-
-            if(Vector3.Angle(targetDir,transform.forward)<3f){  //vector3.angle returns the degree between two vectors, in this scenerio,
+            float degreeWithin = 30f/(Vector3.Distance(myPos, enemyPos)); //30 is the k 
+            if(Vector3.Angle(targetDir,transform.forward)<degreeWithin){  //vector3.angle returns the degree between two vectors, in this scenerio,
                                                                 //it returns the angle between player and enemy regardless y parameter
                                                                 // if it is within 3 degrees, 
 
