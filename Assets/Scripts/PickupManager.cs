@@ -5,10 +5,11 @@ using UnityEngine;
 public class PickupManager : MonoBehaviour
 {
     [Header("Player Attributes")]
-    public int ammo;
-    public int ammo2;
-    public int health;
-    public int armor;
+    public UIManager uiManager;
+    public int ammo; //pistol ammo, add to bullets
+    public int ammo2; //shotgun amo, add to shells
+    public int health; //health points, add to health
+    public int armor; //armor points, add to health
     public GameObject currentWeapon; //The weapon the player is using
     public List<GameObject> weapon; //The list of weapons as prefabs
     public List<bool> weaponUnlock; //The list of bools whether an weapon is unlocked(picked up)
@@ -62,7 +63,8 @@ public class PickupManager : MonoBehaviour
 		{
             armor += other.gameObject.GetComponent<GunHealthManager>().thisHealth.restoreHealth;
 			Destroy(other.gameObject);
-		}
+            uiManager.ArmorEdit(armor);
+        }
 		if (other.gameObject.name.Contains("Health"))
 		{
             health += other.gameObject.GetComponent<GunHealthManager>().thisHealth.restoreHealth;
