@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     public Text bullText;
     public Text shellText;
 
+    public Text[] gunText;
+
     public void ArmorEdit(int armor)
     {
         armorText.text = armor.ToString();
