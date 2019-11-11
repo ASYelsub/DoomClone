@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PickupManager : MonoBehaviour
 {
+	public PickupManager instance;
     [Header("Player Attributes")]
     public UIManager uiManager;
     public int ammo; //pistol ammo, add to bullets
@@ -18,6 +19,7 @@ public class PickupManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		instance = this;
         ps = GetComponentInChildren<PlayerShooting>();
     }
 
