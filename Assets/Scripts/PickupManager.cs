@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PickupManager : MonoBehaviour
 {
+	public PickupManager instance;
     [Header("Player Attributes")]
     public UIManager uiManager;
     public int ammo; //pistol ammo, add to bullets
@@ -18,6 +19,7 @@ public class PickupManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		instance = this;
         ps = GetComponentInChildren<PlayerShooting>();
     }
 
@@ -27,17 +29,46 @@ public class PickupManager : MonoBehaviour
         if(currentWeapon!=null)
         ps.myGun = currentWeapon.GetComponent<GunHealthManager>().thisGun;
         SwapGun();
+        ChangeUI();
+    }
+
+    void ChangeUI()
+    {
+        uiManager.bullText.text = ammo.ToString() + "/50";
+        uiManager.shellText.text = ammo2.ToString() + "/50";
+        if (currentWeapon == weapon[1] && currentWeapon!= null)
+        {
+            uiManager.ammoText.text = ammo.ToString();
+            uiManager.gunText[0].color = Color.yellow;
+        }
+        else
+        {
+            uiManager.gunText[0].color = Color.black;
+        }
+        
+        if(currentWeapon == weapon[2] && currentWeapon != null)
+        {
+            uiManager.ammoText.text = ammo2.ToString();
+            uiManager.gunText[1].color = Color.yellow;
+        }
+        else
+        {
+            uiManager.gunText[1].color = Color.black;
+        }
+        
+        uiManager.healthText.text = health.ToString();
+        uiManager.armorText.text = armor.ToString();
     }
 
     void SwapGun() //By pressing 0 and 1, you can switch between pistol and shotgun.
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && weaponUnlock[0])
-        {
-            currentWeapon = weapon[0];
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2) && weaponUnlock[1])
+        if (Input.GetKeyDown(KeyCode.Alpha2) && weaponUnlock[0])
         {
             currentWeapon = weapon[1];
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3) && weaponUnlock[1])
+        {
+            currentWeapon = weapon[2];
         }
     }
 
@@ -49,13 +80,13 @@ public class PickupManager : MonoBehaviour
             if (other.gameObject.name.Contains("Pistol"))
             {
                 weaponUnlock[0] = true;
-                currentWeapon = weapon[0];
+                currentWeapon = weapon[1];
                 Destroy(other.gameObject);
             }
             if (other.gameObject.name.Contains("Shotgun"))
             {
                 weaponUnlock[1] = true;
-                currentWeapon = weapon[1];
+                currentWeapon = weapon[2];
                 Destroy(other.gameObject);
             }
         }

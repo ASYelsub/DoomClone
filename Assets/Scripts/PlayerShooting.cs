@@ -20,11 +20,7 @@ public class PlayerShooting : MonoBehaviour
         {
             gunCoolDown -= Time.deltaTime; 
         }
-        
-        
-        
-       
-        
+
         DetectNShoot();
     }
 
