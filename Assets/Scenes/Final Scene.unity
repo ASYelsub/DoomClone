@@ -3062,13 +3062,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &919182735
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
   serializedVersion: 6
-  m_PrefabAsset: {fileID: 0}
   m_Component:
   - component: {fileID: 919182736}
   - component: {fileID: 919182738}
@@ -3091,8 +3085,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
-  m_RootOrder: 1
   m_Father: {fileID: 331174187}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3109,36 +3103,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_EditorClassIdentifier: 
   m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_CullTransparentMesh: 0
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919182735}
-  m_PrefabInstance: {fileID: 0}
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_ObjectHideFlags: 0
-CanvasRenderer:
---- !u!222 &919182738
-  m_Text: armor
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-    m_HorizontalOverflow: 0
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 4015155e8c479e24dbb747ba3503890e, type: 3}
+    m_FontSize: 121
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 133
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_MinSize: 10
-    m_MaxSize: 133
-    m_BestFit: 0
-    m_FontStyle: 0
-    m_FontSize: 121
-    m_Font: {fileID: 12800000, guid: 4015155e8c479e24dbb747ba3503890e, type: 3}
-      m_Calls: []
-  m_FontData:
-    m_PersistentCalls:
-  m_OnCullStateChanged:
-  m_RaycastTarget: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: armor
+--- !u!222 &919182738
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919182735}
+  m_CullTransparentMesh: 0
 --- !u!1 &932590122
 GameObject:
   m_ObjectHideFlags: 0
