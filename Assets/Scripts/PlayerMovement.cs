@@ -63,6 +63,6 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.A)){
             cameraTransform.Rotate(aRotate);  
         }
-        //cameraTransform.position = new Vector3(cameraTransform.position.x, defaultHeight + Mathf.Cos(walkTime*freq)*amp, cameraTransform.position.z);
+        cameraTransform.position = new Vector3(cameraTransform.position.x, defaultHeight + Mathf.Cos(walkTime*freq)*amp, cameraTransform.position.z);
     }
 }
