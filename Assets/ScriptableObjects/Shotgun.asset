@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb3e242254eb4b4cba7d63a40b62e28, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  GunFire: {fileID: 0}
   SelectedWeapon: {fileID: 0}
   FireSpeed: 1
   Automatic: 0
   bulletNumber: 0
   bulletVel: 0
-  Damage: 0
+  Damage: 3
