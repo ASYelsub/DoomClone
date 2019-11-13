@@ -37,6 +37,10 @@ public class PlayerShooting : MonoBehaviour
     void DetectNShoot(){            //This method is used to detect enemy on different heights
         
         foreach(GameObject enemy in enemyList){                //Loop every enemy is the list
+            if(enemy == null)
+            {
+                break;
+            }
             Vector3 enemyPos = enemy.transform.position;        //Get their position
             Vector3 myPos = transform.position;                 
 
@@ -55,7 +59,7 @@ public class PlayerShooting : MonoBehaviour
 
                         // it detects if there are obstacles between them
                     Debug.Log("Detect");
-                    
+                    enemy.GetComponent<EnemyManager>().HP -= myGun.Damage;
                         gunCoolDown = myGun.FireSpeed;
                         Update();
                     
