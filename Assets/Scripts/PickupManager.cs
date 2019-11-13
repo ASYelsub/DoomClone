@@ -34,30 +34,33 @@ public class PickupManager : MonoBehaviour
 
     void ChangeUI()
     {
-        uiManager.bullText.text = ammo.ToString() + "/50";
-        uiManager.shellText.text = ammo2.ToString() + "/50";
-        if (currentWeapon == weapon[1] && currentWeapon!= null)
+        if(uiManager!= null)
         {
-            uiManager.ammoText.text = ammo.ToString();
-            uiManager.gunText[0].color = Color.yellow;
+            uiManager.bullText.text = ammo.ToString() + "/50";
+            uiManager.shellText.text = ammo2.ToString() + "/50";
+            if (currentWeapon == weapon[1] && currentWeapon != null)
+            {
+                uiManager.ammoText.text = ammo.ToString();
+                uiManager.gunText[0].color = Color.yellow;
+            }
+            else
+            {
+                uiManager.gunText[0].color = Color.black;
+            }
+
+            if (currentWeapon == weapon[2] && currentWeapon != null)
+            {
+                uiManager.ammoText.text = ammo2.ToString();
+                uiManager.gunText[1].color = Color.yellow;
+            }
+            else
+            {
+                uiManager.gunText[1].color = Color.black;
+            }
+
+            uiManager.healthText.text = health.ToString();
+            uiManager.armorText.text = armor.ToString();
         }
-        else
-        {
-            uiManager.gunText[0].color = Color.black;
-        }
-        
-        if(currentWeapon == weapon[2] && currentWeapon != null)
-        {
-            uiManager.ammoText.text = ammo2.ToString();
-            uiManager.gunText[1].color = Color.yellow;
-        }
-        else
-        {
-            uiManager.gunText[1].color = Color.black;
-        }
-        
-        uiManager.healthText.text = health.ToString();
-        uiManager.armorText.text = armor.ToString();
     }
 
     void SwapGun() //By pressing 0 and 1, you can switch between pistol and shotgun.
@@ -101,5 +104,10 @@ public class PickupManager : MonoBehaviour
             health += other.gameObject.GetComponent<GunHealthManager>().thisHealth.restoreHealth;
             Destroy(other.gameObject);
 		}
-	}
+        if (other.gameObject.name.Contains("Bullet"))
+        {
+            health -= 2;
+            Destroy(other.gameObject);
+        }
+    }
 }
