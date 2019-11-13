@@ -18,19 +18,19 @@ public class EnemyManager : MonoBehaviour
     */
 
     private Rigidbody rgbd;
-    private bool shootingRunning;
+    private bool shootingRunning;  //If the shooting corotine is in action
     [Header("Attributes")]
-    public float movSpeed;
+    public float movSpeed; //Movement speed
     public float shootFrequency; //The time interval of shooting a bullet
-    public int HP;
+    public int HP; //Health point of the enemy
     float timer = 0;
     [Header("States")]
     public int state; // 0 idle 1 detected 2 dead
     [Header("Animation")]
-    public Animation anim;
+    public Animation anim; //Animation played for ideling
     [Header("GameObjects")]
     public GameObject bullet;
-    public GameObject leftover;
+    public GameObject leftover; //What ever instantiate when player is destoryed
     public GameObject player;
 
     void Start()
@@ -41,12 +41,12 @@ public class EnemyManager : MonoBehaviour
 
     void Update()
     {
-        if(state == 0)
+        if(state == 0) //The state of ideling
         {
             StopCoroutine(Shooting());
             // Do Nothing...
         }
-        else if(state == 1)
+        else if(state == 1) //The state of moving
         {
             Movement();
             if (!shootingRunning)
@@ -54,7 +54,7 @@ public class EnemyManager : MonoBehaviour
                 StartCoroutine(Shooting());
             }
         }
-        if(state == 2 || HP <= 0)
+        if(state == 2 || HP <= 0) //The state of dying
         {
             if(leftover != null)
             Instantiate(leftover, gameObject.transform.position + new Vector3(0f, 0f, 0f), gameObject.transform.rotation);
@@ -62,17 +62,17 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    void Movement()
+    void Movement() //Controls the movement of the enemy AI
     {
         timer += Time.deltaTime;
         transform.LookAt(player.transform);
         if(timer < 2)
-            rgbd.AddRelativeForce(Vector3.left * movSpeed);
+            rgbd.AddRelativeForce(Vector3.left * movSpeed);  //Move Left
         if (timer > 2 && timer < 4)
-            rgbd.AddRelativeForce(Vector3.right * movSpeed);
+            rgbd.AddRelativeForce(Vector3.right * movSpeed); //Move Right
         if (timer > 4 && timer < 5)
-            rgbd.AddRelativeForce(Vector3.forward * movSpeed);
-        if(timer > 6) //Intentionally leaves 1 second to pause
+            rgbd.AddRelativeForce(Vector3.forward * movSpeed); //Move Forward
+        if(timer > 6) //Intentionally leaves 1 second to pause (so that the player get the chance to shoot easily)
         {
             timer = 0;
         }
@@ -82,7 +82,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    IEnumerator Shooting()
+    IEnumerator Shooting() //The corotine for shooting
     {
         shootingRunning = true;
         yield return new WaitForSeconds(shootFrequency);

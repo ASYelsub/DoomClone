@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PickupManager : MonoBehaviour
 {
+
+    // This script functions as the Player Manager. It countains all the player attributes and functions.
 	public PickupManager instance;
     [Header("Player Attributes")]
-    public UIManager uiManager;
+    public UIManager uiManager; //reference to another code, UIManager
     public int ammo; //pistol ammo, add to bullets
     public int ammo2; //shotgun amo, add to shells
     public int health; //health points, add to health
@@ -19,20 +21,20 @@ public class PickupManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		instance = this;
+		instance = this;  //Setting a singleton
         ps = GetComponentInChildren<PlayerShooting>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(currentWeapon!=null)
+        if(currentWeapon!=null) //Assign the gun
         ps.myGun = currentWeapon.GetComponent<GunHealthManager>().thisGun;
         SwapGun();
         ChangeUI();
     }
 
-    void ChangeUI()
+    void ChangeUI() //Update the UI system
     {
         if(uiManager!= null)
         {
@@ -63,7 +65,7 @@ public class PickupManager : MonoBehaviour
         }
     }
 
-    void SwapGun() //By pressing 0 and 1, you can switch between pistol and shotgun.
+    void SwapGun() //By pressing 2 and 3, you can switch between pistol and shotgun.
     {
         if (Input.GetKeyDown(KeyCode.Alpha2) && weaponUnlock[0])
         {
@@ -75,7 +77,7 @@ public class PickupManager : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //The actual pick up system
     {
         print(other.gameObject.name);
         if (other.gameObject.name.Contains("Weapon"))
