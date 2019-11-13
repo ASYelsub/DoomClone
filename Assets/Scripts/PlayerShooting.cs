@@ -5,20 +5,30 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
+    [Header("Animation Stuff")] public Animator Shooting; 
+    
+    
+    
+    
     public List<GameObject> enemyList;  // the list of enemy
     public LayerMask obstacleLayer; // the layer of obstacles
-    private float gunCoolDown;
+    public float gunCoolDown;
     public Guns myGun; 
     
    
 
     void Update()
     {
+        if (Shooting.GetBool("Pistol"))
+        {
+            Shooting.SetBool("Pistol", false);
+        }
        // gunCoolDown = myGun.FireSpeed; 
      
         if (gunCoolDown > 0)
         {
             gunCoolDown -= Time.deltaTime; 
+            Shooting.SetBool("Pistol", true);
         }
 
         DetectNShoot();
