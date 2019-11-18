@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿
+
+
+
+/*This script is abandoned!!! */
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
