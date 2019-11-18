@@ -12,22 +12,19 @@ public class DoorController : MonoBehaviour
     public bool liftdoor;
     public float doorTimer;
 
+    //sets minimum and maximum height of the door
     public float minY = 14.6f;
-
     public float maxY = 40f; 
-    // Start is called before the first frame update
-    void Start()
-    {
-   
-    }
+
 
     // Update is called once per frame
     void Update()
     {
+        // sets door position as a transform and places a clamp on the Y values. 
        DoorPos.position = new Vector3 (DoorPos.position.x, Mathf.Clamp(DoorPos.position.y, minY, maxY),DoorPos.position.z);
 
      
-     
+           //When player presses space, a message is sent to raise the door. A timer then once raised and when the timer reaches 0 the door closes
         if (Input.GetKey(KeyCode.Space))
         {
             liftdoor = true; 
@@ -39,6 +36,7 @@ public class DoorController : MonoBehaviour
             doorTimer -= Time.deltaTime;
         }
  
+        // sets the bool to false once closed so that it can be opened again
         if (doorTimer <= 0)
         {
             liftdoor = false; 
