@@ -60,10 +60,15 @@ public class PlayerShooting : MonoBehaviour
                         // it detects if there are obstacles between them
                     Debug.Log("Detect");
                     enemy.GetComponent<EnemyManager>().HP -= myGun.Damage;
-                        gunCoolDown = myGun.FireSpeed;
+                        
                        // Update();
                     
                     
+                }
+                
+               else if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    gunCoolDown = myGun.FireSpeed;
                 }
             }
         }
