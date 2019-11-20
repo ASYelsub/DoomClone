@@ -61,7 +61,7 @@ public class PlayerShooting : MonoBehaviour
                     Debug.Log("Detect");
                     enemy.GetComponent<EnemyManager>().HP -= myGun.Damage;
                         gunCoolDown = myGun.FireSpeed;
-                        Update();
+                       // Update();
                     
                     
                 }
