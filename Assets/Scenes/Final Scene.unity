@@ -6987,40 +6987,44 @@ MonoBehaviour:
   maxAudioSouces: 50
   sourcePrefab: {fileID: 8836606962326620000, guid: efc62dc92da42474facd865183c1d9af,
     type: 3}
-  hittingGround: {fileID: 0}
-  doorActivison: {fileID: 0}
-  playerInjured: {fileID: 0}
+  hittingGround: {fileID: 8300000, guid: 1b57646e89a0347db841528c3c2a64d3, type: 3}
+  doorActivison: {fileID: 8300000, guid: bbb04b8e608d54fb88d2b621bf7284e2, type: 3}
+  playerInjured: {fileID: 8300000, guid: a42707b7ff7934beface60e372deb307, type: 3}
   playerDeath:
-  - {fileID: 0}
-  - {fileID: 0}
-  pistol: {fileID: 0}
-  shotgun: {fileID: 0}
-  fistHitting: {fileID: 0}
-  gunEnemySight: []
-  gunEnemyDeath: []
-  gunEnemySG: {fileID: 0}
-  gunEnemyPistol: {fileID: 0}
-  gunEnemyInjured: {fileID: 0}
+  - {fileID: 8300000, guid: 78caccdadbc7f458d8a1a7165b0c4068, type: 3}
+  - {fileID: 8300000, guid: 87899bb4d8f3244738eedb4b13607435, type: 3}
+  pistol: {fileID: 8300000, guid: 89f137e9a4f774a538e25975b6014b51, type: 3}
+  shotgun: {fileID: 8300000, guid: a8f33649f4f1f4108ac55b7843580109, type: 3}
+  fistHitting: {fileID: 8300000, guid: f191411e3707d418497020e7d3ed03e0, type: 3}
+  gunEnemySight:
+  - {fileID: 8300000, guid: 312d6b30433ea4eea93d46db0a08ea34, type: 3}
+  - {fileID: 8300000, guid: da96eb9203d4d484d890520c3840df89, type: 3}
+  - {fileID: 8300000, guid: 57d3c1f276c83464487052d0f8476aec, type: 3}
+  gunEnemyDeath:
+  - {fileID: 8300000, guid: b3ff3985accd840199413a1c51627102, type: 3}
+  - {fileID: 8300000, guid: a1ca12da8abad42f299a5ec7ed31b834, type: 3}
+  - {fileID: 8300000, guid: fd8ea3111990b470bb4b8fc494b59bf2, type: 3}
+  gunEnemySG: {fileID: 8300000, guid: 3fab82265c53f41568975d3372356b98, type: 3}
+  gunEnemyPistol: {fileID: 8300000, guid: 8756716c993cb4382b396380d7eb5a92, type: 3}
+  gunEnemyInjured: {fileID: 8300000, guid: 9fd40bfbb7e5c4e41be59fd42fd4d286, type: 3}
   impEnemySight:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 9668ac2b2c6d24777a20adcec7c59cd5, type: 3}
+  - {fileID: 8300000, guid: d7233562244684278b17788543ad8722, type: 3}
   impEnemyDeath:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  impEnemyAttack: {fileID: 0}
-  impEnemyInjured: {fileID: 0}
-  liftStart: {fileID: 0}
-  liftStop: {fileID: 0}
-  doorOpen: {fileID: 0}
-  doorClose: {fileID: 0}
-  switchOn: {fileID: 0}
-  switchOff: {fileID: 0}
-  barrelExplode: {fileID: 0}
-  itemPickup: {fileID: 0}
-  weaponPickUp: {fileID: 0}
-  powerUp: {fileID: 0}
+  - {fileID: 8300000, guid: 95ef84bbc6a1b4625b6b38385425fb01, type: 3}
+  - {fileID: 8300000, guid: 994a3024994f74f79a55c916f99057ee, type: 3}
+  impEnemyAttack: {fileID: 8300000, guid: fc7373affb85d4015a384efb81615d35, type: 3}
+  impEnemyInjured: {fileID: 8300000, guid: fcf856fd5f3b946bb86bec7b84e51d3c, type: 3}
+  liftStart: {fileID: 8300000, guid: 30c467a9cc3724cb5b751e09950d6f6a, type: 3}
+  liftStop: {fileID: 8300000, guid: 10aef1c9bbe794a7b80081ac57eee315, type: 3}
+  doorOpen: {fileID: 8300000, guid: 1715e057512b74d7da34f7e9892d4561, type: 3}
+  doorClose: {fileID: 8300000, guid: 72914a9230ad543da80db46069b7cfea, type: 3}
+  switchOn: {fileID: 8300000, guid: 68e036370fe4f4c1cbd637f284f0402a, type: 3}
+  switchOff: {fileID: 8300000, guid: f1a44cde70f15461693a0317531a6803, type: 3}
+  barrelExplode: {fileID: 8300000, guid: 56c218ec979e24d88850441949f43add, type: 3}
+  itemPickUp: {fileID: 8300000, guid: fb594698385814c9fbb2b03582b8d982, type: 3}
+  weaponPickUp: {fileID: 8300000, guid: fe1df232abb5e47018cd3ca0c55534cf, type: 3}
+  powerUp: {fileID: 8300000, guid: e203e8bde16c64b79bfde94d7cac37b9, type: 3}
   msicFirstLevel: {fileID: 0}
   msicSecondLevel: {fileID: 0}
 --- !u!4 &1887752661
