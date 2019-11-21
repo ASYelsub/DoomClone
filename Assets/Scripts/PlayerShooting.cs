@@ -16,19 +16,26 @@ public class PlayerShooting : MonoBehaviour
     public Guns myGun; 
     
    
-
+void Start()
+{
+ 
+            Shooting.SetBool("Pistol", false);
+        
+}
     void Update()
     {
-        if (Shooting.GetBool("Pistol"))
-        {
-            Shooting.SetBool("Pistol", false);
-        }
+       
        // gunCoolDown = myGun.FireSpeed; 
      
         if (gunCoolDown > 0)
         {
             gunCoolDown -= Time.deltaTime; 
             Shooting.SetBool("Pistol", true);
+        }
+
+        else
+        {
+            Shooting.SetBool("Pistol", false);
         }
 
         DetectNShoot();
@@ -66,7 +73,7 @@ public class PlayerShooting : MonoBehaviour
                     
                 }
                 
-               else if (Input.GetKeyDown(KeyCode.Mouse0))
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     gunCoolDown = myGun.FireSpeed;
                 }
