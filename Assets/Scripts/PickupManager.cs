@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickupManager : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class PickupManager : MonoBehaviour
     public List<GameObject> weapon; //The list of weapons as prefabs
     public List<bool> weaponUnlock; //The list of bools whether an weapon is unlocked(picked up)
     public PlayerShooting ps; //The ScriptableObject to change
-
+ 
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +69,7 @@ public class PickupManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha2) && weaponUnlock[0])
         {
+         
             currentWeapon = weapon[1];
         }
         if (Input.GetKeyDown(KeyCode.Alpha3) && weaponUnlock[1])

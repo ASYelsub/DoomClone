@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    [Header("Animation Stuff")] public Animator Shooting; 
+    [Header("Animation Stuff")] 
+    public Animator Shooting; 
     
     
     
