@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb3e242254eb4b4cba7d63a40b62e28, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  SelectedWeapon: {fileID: 0}
+  SelectedWeapon: {fileID: 21300016, guid: d5705e685896644be976dbdc2bf07fc2, type: 3}
   FireSpeed: 0.5
   Automatic: 0
   bulletNumber: 0
