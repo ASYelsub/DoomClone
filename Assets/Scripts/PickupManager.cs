@@ -112,5 +112,30 @@ public class PickupManager : MonoBehaviour
             health -= 2;
             Destroy(other.gameObject);
         }
+        if (other.gameObject.name.Contains("Ammo"))
+        {
+            if (other.gameObject.name.Contains("Pistol"))
+            {
+                if (other.gameObject.name.Contains("clip"))
+                {
+                    ammo += 5; //Ammo Clip for Pistol
+                }
+                if (other.gameObject.name.Contains("box"))
+                {
+                    ammo += 20; //Ammo Clip for Pistol
+                }
+            }
+            if (other.gameObject.name.Contains("Shotgun"))
+            {
+                if (other.gameObject.name.Contains("clip"))
+                {
+                    ammo2 += 5; //Ammo Clip for Pistol
+                }
+                if (other.gameObject.name.Contains("box"))
+                {
+                    ammo2 += 20; //Ammo Clip for Pistol
+                }
+            }
+        }
     }
 }
