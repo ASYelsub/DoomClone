@@ -5,12 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DoomClone/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DoomClone/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DoomClone/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DoomClone/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DoomClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DoomClone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Final Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Final Scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ginele's Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ginele's Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Health.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/ListofGuns.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerShooting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerShooting.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Guns.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Guns.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +24,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GunHealthManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerMovementAbby.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickupManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ScriptableObjects/HealthObjects.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ScriptableObjects/Guns.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -36,9 +33,10 @@
         <option value="$PROJECT_DIR$/Assets/ScriptableObject/ScriptableGuns.cs" />
         <option value="$PROJECT_DIR$/Assets/ScriptableObjects/ScriptableObjects.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovementAbby.cs" />
-        <option value="$PROJECT_DIR$/Assets/ScriptableObjects/Guns.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DoorController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PickupManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerShooting.cs" />
+        <option value="$PROJECT_DIR$/Assets/ScriptableObjects/Guns.cs" />
       </list>
     </option>
   </component>
@@ -104,6 +102,13 @@
       <workItem from="1572967925008" duration="1014000" />
       <workItem from="1573669536765" duration="3376000" />
       <workItem from="1573686200216" duration="703000" />
+      <workItem from="1574116289346" duration="130000" />
+      <workItem from="1574286636474" duration="2000" />
+      <workItem from="1574288255259" duration="420000" />
+      <workItem from="1574293351030" duration="269000" />
+      <workItem from="1574359892989" duration="1139000" />
+      <workItem from="1574717967132" duration="3000" />
+      <workItem from="1574718468891" duration="54000" />
     </task>
     <servers />
   </component>

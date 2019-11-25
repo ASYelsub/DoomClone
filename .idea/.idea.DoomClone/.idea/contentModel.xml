@@ -2,23 +2,54 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="ResonanceAudio" t="Include">
+          <e p="Editor" t="Include">
+            <e p="ResonanceAudioBuildProcessor.cs" t="Include" />
+            <e p="ResonanceAudioListenerEditor.cs" t="Include" />
+            <e p="ResonanceAudioMaterialMapEditor.cs" t="Include" />
+            <e p="ResonanceAudioReverbBakingWindow.cs" t="Include" />
+            <e p="ResonanceAudioReverbComputer.cs" t="Include" />
+            <e p="ResonanceAudioReverbProbeEditor.cs" t="Include" />
+            <e p="ResonanceAudioRoomEditor.cs" t="Include" />
+            <e p="ResonanceAudioSourceEditor.cs" t="Include" />
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="ResonanceAudio.cs" t="Include" />
+            <e p="ResonanceAudioAcousticMesh.cs" t="Include" />
+            <e p="ResonanceAudioListener.cs" t="Include" />
+            <e p="ResonanceAudioMaterialMap.cs" t="Include" />
+            <e p="ResonanceAudioMaterialMapper.cs" t="Include" />
+            <e p="ResonanceAudioMaterialMapperUpdater.cs" t="Include" />
+            <e p="ResonanceAudioReverbProbe.cs" t="Include" />
+            <e p="ResonanceAudioRoom.cs" t="Include" />
+            <e p="ResonanceAudioRoomManager.cs" t="Include" />
+            <e p="ResonanceAudioSource.cs" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="ResonanceAudioSurfaceMaterial.shader" t="Include" />
+          </e>
+        </e>
         <e p="ScriptableObjects" t="Include">
           <e p="Guns.cs" t="Include" />
           <e p="HealthObjects.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
           <e p="BulletMover.cs" t="Include" />
+          <e p="DemoPlayerController.cs" t="Include" />
           <e p="DoorController.cs" t="Include" />
           <e p="EnemyManager.cs" t="Include" />
           <e p="EnemyTriggerManager.cs" t="Include" />
           <e p="GunHealthManager.cs" t="Include" />
+          <e p="HeadBob.cs" t="Include" />
           <e p="PickupManager.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
           <e p="PlayerMovementAbby.cs" t="Include" />
           <e p="PlayerShooting.cs" t="Include" />
           <e p="Rotator.cs" t="Include" />
+          <e p="SoundMan.cs" t="Include" />
           <e p="UIManager.cs" t="Include" />
         </e>
       </e>
