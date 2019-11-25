@@ -6,7 +6,7 @@ using UnityEngine;
 public class Guns : ScriptableObject
 {
 // Sprite of the weapon that is selected by the player 
-    public Sprite SelectedWeapon;
+    public Sprite IdolWeapon;
     //used to create rate of fire for each individual gun
     public float FireSpeed;
     //this bool determines if a gun is automatic because the script for automatic weapons differ from single shot weapons 
