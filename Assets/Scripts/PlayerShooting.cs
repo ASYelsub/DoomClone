@@ -71,13 +71,12 @@ void Start()
                         
                        // Update();
                     
-                    
+                       
+                           gunCoolDown = myGun.FireSpeed;
+                       
                 }
                 
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    gunCoolDown = myGun.FireSpeed;
-                }
+               
             }
         }
     }
