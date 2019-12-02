@@ -11,7 +11,6 @@ public class PlayerShooting : MonoBehaviour
     public List<GameObject> enemyList;  // the list of enemy
     public LayerMask obstacleLayer; // the layer of obstacles
 
-    [Header("Auto Assign")]
     public static Guns myGun;
     
     //Gun Data

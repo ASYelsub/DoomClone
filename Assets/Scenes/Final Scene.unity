@@ -1862,6 +1862,7 @@ GameObject:
   - component: {fileID: 436146558}
   - component: {fileID: 436146557}
   - component: {fileID: 436146563}
+  - component: {fileID: 436146562}
   - component: {fileID: 436146561}
   - component: {fileID: 436146556}
   m_Layer: 0
@@ -1975,17 +1976,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f141bb177c284fd9a0dba447522063a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 1426637096}
-  ammo: 0
-  ammo2: 0
-  health: 20
-  armor: 0
-  currentWeapon: {fileID: 0}
   weapon:
   - {fileID: 0}
-  - {fileID: 6819256553914687163, guid: dc24e98f108ef4030b50a0ddbd39b888, type: 3}
-  - {fileID: 5966224831389308133, guid: c52644893a7c548e6b5190b41df26588, type: 3}
-  weaponUnlock: 0000
+  - {fileID: 11400000, guid: 15711e8c00d134197b63fca22791257d, type: 2}
+  - {fileID: 11400000, guid: 429ce9336ad5f4cb7bd9588e584685ba, type: 2}
+--- !u!114 &436146562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436146555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408cf37ee92aa334e885b9f961e99f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammo: 0
+  ammo2: 0
+  health: 0
+  armor: 0
 --- !u!143 &436146563
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6933,7 +6943,7 @@ GameObject:
   - component: {fileID: 1127601617}
   - component: {fileID: 1127601616}
   m_Layer: 5
-  m_Name: Arms
+  m_Name: ArmSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10902,13 +10912,15 @@ MonoBehaviour:
   armorText: {fileID: 361838458}
   bullText: {fileID: 810102952}
   shellText: {fileID: 99935939}
+  rocketText: {fileID: 22490678}
+  cellText: {fileID: 1625629337}
   gunText:
   - {fileID: 200347628}
   - {fileID: 1531499795}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 546849627}
+  - {fileID: 1338558813}
+  - {fileID: 351443249}
+  - {fileID: 396656721}
 --- !u!114 &1426637097
 MonoBehaviour:
   m_ObjectHideFlags: 0
