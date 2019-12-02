@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEditor.Experimental.UIElements.GraphView;
@@ -12,6 +13,7 @@ public class DoorController : MonoBehaviour
     public bool liftdoor;
     public float doorTimer;
 
+    public bool inRange; 
     //sets minimum and maximum height of the door
     public float minY = 14.6f;
     public float maxY = 40f; 
@@ -25,7 +27,7 @@ public class DoorController : MonoBehaviour
 
      
            //When player presses space, a message is sent to raise the door. A timer then once raised and when the timer reaches 0 the door closes
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && inRange)
         {
             liftdoor = true; 
         }
@@ -41,13 +43,24 @@ public class DoorController : MonoBehaviour
         {
             liftdoor = false; 
             transform.Translate(0, -Lift, 0);
-            
+            inRange = false; 
+
         }
 
         if (transform.position.y <= minY)
         {
             doorTimer = 3;
         }
+    }
+
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            inRange = true; 
+        }
+       
     }
 }
 
