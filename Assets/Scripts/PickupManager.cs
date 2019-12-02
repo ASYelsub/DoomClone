@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.UI;
 
 public class PickupManager : MonoBehaviour
 {
-	public PickupManager instance;
     [Header("Player Attributes")]
     public UIManager uiManager;
     public int ammo; //pistol ammo, add to bullets
@@ -15,54 +15,54 @@ public class PickupManager : MonoBehaviour
     public GameObject currentWeapon; //The weapon the player is using
     public List<GameObject> weapon; //The list of weapons as prefabs
     public List<bool> weaponUnlock; //The list of bools whether an weapon is unlocked(picked up)
-    public PlayerShooting ps; //The ScriptableObject to change
+    //public PlayerShooting ps; //The ScriptableObject to change
  
   
     // Start is called before the first frame update
     void Start()
     {
-		instance = this;
-        ps = GetComponentInChildren<PlayerShooting>();
+        PlayerShooting.myGun = (Guns)AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/Pistol.asset", typeof(Guns));
+        ammo = PlayerShooting.myGun.bulletNumber;
+        //ps = GetComponentInChildren<PlayerShooting>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if(currentWeapon!=null)
-        ps.myGun = currentWeapon.GetComponent<GunHealthManager>().thisGun;
+        //ps.myGun = currentWeapon.GetComponent<GunHealthManager>().thisGun;
         SwapGun();
         ChangeUI();
     }
 
     void ChangeUI()
     {
-        if(uiManager!= null)
+
+        uiManager.bullText.text = ammo.ToString() + "/50";
+        uiManager.shellText.text = ammo2.ToString() + "/50";
+        if (currentWeapon == weapon[1] && currentWeapon != null)
         {
-            uiManager.bullText.text = ammo.ToString() + "/50";
-            uiManager.shellText.text = ammo2.ToString() + "/50";
-            if (currentWeapon == weapon[1] && currentWeapon != null)
-            {
-                uiManager.ammoText.text = ammo.ToString();
-                uiManager.gunText[0].color = Color.yellow;
-            }
-            else
-            {
-                uiManager.gunText[0].color = Color.black;
-            }
-
-            if (currentWeapon == weapon[2] && currentWeapon != null)
-            {
-                uiManager.ammoText.text = ammo2.ToString();
-                uiManager.gunText[1].color = Color.yellow;
-            }
-            else
-            {
-                uiManager.gunText[1].color = Color.black;
-            }
-
-            uiManager.healthText.text = health.ToString();
-            uiManager.armorText.text = armor.ToString();
+            uiManager.ammoText.text = ammo.ToString();
+            uiManager.gunText[0].color = Color.yellow;
         }
+        else
+        {
+            uiManager.gunText[0].color = Color.black;
+        }
+
+        if (currentWeapon == weapon[2] && currentWeapon != null)
+        {
+            uiManager.ammoText.text = ammo2.ToString();
+            uiManager.gunText[1].color = Color.yellow;
+        }
+        else
+        {
+            uiManager.gunText[1].color = Color.black;
+        }
+
+        uiManager.healthText.text = health.ToString();
+        uiManager.armorText.text = armor.ToString();
+
     }
 
     void SwapGun() //By pressing 0 and 1, you can switch between pistol and shotgun.

@@ -5,79 +5,99 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    [Header("Animation Stuff")] 
-    public Animator Shooting; 
-    
-    
-    
-    
+    [Header("System Assign")]
+    public HeadBob pistolVSwing;
+    public HeadBob pistolHSwing;
     public List<GameObject> enemyList;  // the list of enemy
     public LayerMask obstacleLayer; // the layer of obstacles
-    public float gunCoolDown;
-    public Guns myGun; 
+
+    [Header("Auto Assign")]
+    public static Guns myGun;
     
-   
-void Start()
-{
- 
-            Shooting.SetBool("Pistol", false);
-        
-}
-    void Update()
+    //Gun Data
+    private float gunCoolDown;
+    private int damage;
+    private Sprite idle;
+    private Sprite shot;
+    private Sprite after;
+
+    //InGameUsing
+    private float gunCoolDownSec;
+
+    void Start()
     {
-       
-       // gunCoolDown = myGun.FireSpeed; 
-     
-        if (gunCoolDown > 0)
-        {
-            gunCoolDown -= Time.deltaTime; 
-            Shooting.SetBool("Pistol", true);
-        }
+        gunCoolDown = myGun.FireSpeed;
+        idle = myGun.idle;
+        shot = myGun.shot;
+        after = myGun.after;
+        gunCoolDownSec = gunCoolDown;
+        GetComponent<SpriteRenderer>().sprite = idle;
+    }
 
-        else
-        {
-            Shooting.SetBool("Pistol", false);
-        }
-
+    private void Update()
+    {
         DetectNShoot();
+    }
+
+    private void FixedUpdate()
+    {
+        GunDataUpdate();
+
+        if (gunCoolDownSec > 0)
+        {
+            gunCoolDownSec -= Time.deltaTime;
+        }
     }
 
     void DetectNShoot(){            //This method is used to detect enemy on different heights
         
-        foreach(GameObject enemy in enemyList){                //Loop every enemy is the list
-            if(enemy == null)
-            {
-                break;
-            }
-            Vector3 enemyPos = enemy.transform.position;        //Get their position
-            Vector3 myPos = transform.position;                 
+        if(Input.GetKeyDown(KeyCode.Mouse0) && gunCoolDownSec <0.01f ){
+            gunCoolDownSec = gunCoolDown;            
+            StartCoroutine("Shot");
 
-            enemyPos.y = 0;                                 // the reason set y to zero is that we want to get a horizontal vector
-            myPos.y = 0;
+            foreach(GameObject enemy in enemyList){      //Loop every enemy is the list
+                if(enemy == null)
+                    break;
+                Vector3 enemyPos = enemy.transform.position;        //Get their position
+                Vector3 myPos = transform.position;                 
+                enemyPos.y = 0;                                 // the reason set y to zero is that we want to get a horizontal vector
+                myPos.y = 0;
 
-            Vector3 targetDir = enemyPos-myPos;             //this is the vector between enemy and player
-            float degreeWithin = 30f/(Vector3.Distance(myPos, enemyPos)); //30 is the k 
-            if(Vector3.Angle(targetDir,transform.forward)<degreeWithin){  //vector3.angle returns the degree between two vectors, in this scenerio,
-                                                                //it returns the angle between player and enemy regardless y parameter
-                                                                // if it is within 3 degrees, 
+                Vector3 targetDir = enemyPos-myPos;             //this is the vector between enemy and player
+                float degreeWithin = 30f/(Vector3.Distance(myPos, enemyPos)); //30 is the k 
 
-                if(Input.GetKeyDown(KeyCode.Mouse0)
-                    &&!Physics.Linecast(transform.position,enemy.transform.position,obstacleLayer) &&  gunCoolDown <= 0){ 
-                  
-
-                        // it detects if there are obstacles between them
-                    Debug.Log("Detect");
-                    enemy.GetComponent<EnemyManager>().HP -= myGun.Damage;
-                        
-                       // Update();
-                    
-                       
-                           gunCoolDown = myGun.FireSpeed;
-                       
+                if(Vector3.Angle(targetDir,transform.forward)<degreeWithin){  
+                    if(!Physics.Linecast(transform.position,enemy.transform.position,obstacleLayer) ){ // it detects if there are obstacles between them
+                        Debug.Log("ShotOnTarget!");
+                        enemy.GetComponent<EnemyManager>().HP -= damage;                   
+                    }
                 }
-                
-               
             }
         }
+    }
+
+    private void GunDataUpdate()
+    {
+        gunCoolDown = myGun.FireSpeed;
+        idle = myGun.idle;
+        shot = myGun.shot;
+        after = myGun.after;
+        damage = myGun.Damage;
+    }
+
+    IEnumerator Shot()
+    {
+        SoundMan.me.PistolShoot(transform.position); //for now 
+        pistolVSwing.enabled = false;
+        pistolHSwing.enabled = false;
+        GetComponent<SpriteRenderer>().sprite = shot;
+
+        yield return new WaitForSeconds(0.1f);
+        GetComponent<SpriteRenderer>().sprite = after;
+        
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<SpriteRenderer>().sprite = idle;
+        pistolVSwing.enabled = true;
+        pistolHSwing.enabled = true;
     }
 }

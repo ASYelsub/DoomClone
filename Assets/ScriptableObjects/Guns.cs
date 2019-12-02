@@ -5,17 +5,19 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Guns : ScriptableObject
 {
-// Sprite of the weapon that is selected by the player 
-    public Sprite IdolWeapon;
+    // Sprite of the weapon that is selected by the player 
+    public Sprite idle;
+    public Sprite shot;
+    public Sprite after;
     //used to create rate of fire for each individual gun
     public float FireSpeed;
     //this bool determines if a gun is automatic because the script for automatic weapons differ from single shot weapons 
-    public bool Automatic;
+    //public bool Automatic;
     //number of bullets in each gun// ammo
     public int bulletNumber;
     //how fast each bullet travels
-    public float bulletVel;
+    //public float bulletVel;
     //the damage that each gun has on enemies. 
-    public int Damage; 
+    public int Damage;
 
 }

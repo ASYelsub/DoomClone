@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb3e242254eb4b4cba7d63a40b62e28, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  SelectedWeapon: {fileID: 21300016, guid: d5705e685896644be976dbdc2bf07fc2, type: 3}
-  FireSpeed: 0.5
-  Automatic: 0
-  bulletNumber: 0
-  bulletVel: 0
+  idle: {fileID: 21300000, guid: 22b0c4970f4fa4ab9b13734cd59c58b6, type: 3}
+  shot: {fileID: 21300000, guid: d669fa8dfaa9148c983c8e61a0436200, type: 3}
+  after: {fileID: 21300000, guid: 02a550ca1509647c48abd50e30c6b530, type: 3}
+  FireSpeed: 0.33
+  bulletNumber: 50
   Damage: 1
