@@ -1980,6 +1980,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 11400000, guid: 15711e8c00d134197b63fca22791257d, type: 2}
   - {fileID: 11400000, guid: 429ce9336ad5f4cb7bd9588e584685ba, type: 2}
+  weaponUnlock: 010100
 --- !u!114 &436146562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9973,6 +9974,7 @@ MonoBehaviour:
   Lift: 1
   liftdoor: 0
   doorTimer: 3
+  inRange: 0
   minY: -29.2
   maxY: -13.2
 --- !u!65 &1266890032
@@ -10467,6 +10469,7 @@ MonoBehaviour:
   Lift: 1
   liftdoor: 0
   doorTimer: 3
+  inRange: 0
   minY: 14.6
   maxY: 40
 --- !u!65 &1323973654

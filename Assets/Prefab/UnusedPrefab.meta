@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefab/UnusedPrefab.meta
 guid: 7bbf2ce2397b37941aac63da1c4c20a9
+=======
+guid: 2e482e3691e8e104bac88650224a360d
+>>>>>>> master:Assets/Textures.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
