@@ -15,8 +15,8 @@ public class DoorController : MonoBehaviour
 
     public bool inRange; 
     //sets minimum and maximum height of the door
-    public float minY = 14.6f;
-    public float maxY = 40f; 
+    public float minY ;
+    public float maxY ; 
 
 
     // Update is called once per frame
