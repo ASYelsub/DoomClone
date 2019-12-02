@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f3209837-a8cd-4682-8a66-25c09b72ae06" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DoomClone/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DoomClone/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DoomClone/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DoomClone/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DoomClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DoomClone/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ginele's Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ginele's Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Guns.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Guns.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DoorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DoorController.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +25,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickupManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ScriptableObjects/HealthObjects.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ScriptableObjects/Guns.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Billboarding.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -33,10 +33,11 @@
         <option value="$PROJECT_DIR$/Assets/ScriptableObject/ScriptableGuns.cs" />
         <option value="$PROJECT_DIR$/Assets/ScriptableObjects/ScriptableObjects.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovementAbby.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/DoorController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PickupManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerShooting.cs" />
         <option value="$PROJECT_DIR$/Assets/ScriptableObjects/Guns.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Billboarding.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DoorController.cs" />
       </list>
     </option>
   </component>
@@ -109,6 +110,10 @@
       <workItem from="1574359892989" duration="1139000" />
       <workItem from="1574717967132" duration="3000" />
       <workItem from="1574718468891" duration="54000" />
+      <workItem from="1575315892332" duration="8000" />
+      <workItem from="1575315976113" duration="459000" />
+      <workItem from="1575322041383" duration="4000" />
+      <workItem from="1575322163119" duration="159000" />
     </task>
     <servers />
   </component>
