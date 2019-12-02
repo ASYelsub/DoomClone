@@ -30,7 +30,7 @@ public class PickupManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        DataExchange();
+        DataExchangeOut();
         ChangeUI();
     }
 
@@ -39,7 +39,20 @@ public class PickupManager : MonoBehaviour
         SwapGun();
     }
 
-    private void DataExchange()
+    private void LateUpdate()
+    {
+        DataExchangeIn();
+    }
+
+    private void DataExchangeIn()
+    {
+        ammo = PlayerDataHolder.me.ammo;
+        ammo2  = PlayerDataHolder.me.ammo2;
+        health = PlayerDataHolder.me.health;
+        armor = PlayerDataHolder.me.armor;
+    }
+
+    private void DataExchangeOut()
     {
         if (ammo > 200)
             ammo = 200;
@@ -74,7 +87,7 @@ public class PickupManager : MonoBehaviour
 
     void SwapGun() //By pressing 0 and 1, you can switch between pistol and shotgun.
     {
-        if (Input.GetKeyDown(KeyCode.Alpha2) && weaponUnlock[0])
+        if (Input.GetKeyDown(KeyCode.Alpha1) && weaponUnlock[0])
         {
             //for Fists
         }
