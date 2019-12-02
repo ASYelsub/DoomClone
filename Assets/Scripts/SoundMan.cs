@@ -72,6 +72,7 @@ public class SoundMan : MonoBehaviour
         }
     }
 
+
     /*Player Sound Function */
     public void PlayerHittingGround(Vector3 pos){
         AudioSource source = GetSource();
@@ -251,20 +252,21 @@ public class SoundMan : MonoBehaviour
     }
 
     /*Music stuff */
-    public void MsicFirstLevel(){
-        AudioSource source = GetSource();
-        source.clip = msicFirstLevel;
-        source.spread = 180;
-        source.transform.position = new Vector3 (0,0,0);
-        source.Play();
-    }
-    public void MsicSecondLevel(){
-        AudioSource source = GetSource();
-        source.clip = msicSecondLevel;
-        source.spread = 180;
-        source.transform.position = new Vector3 (0,0,0);
-        source.Play();
-    }
+    //public void MsicFirstLevel(){
+    //    AudioSource source = GetSource();
+    //    source.loop = true;
+    //    source.clip = msicFirstLevel;
+    //    source.spread = 180;
+    //    source.transform.position = new Vector3 (0,0,0);
+    //    source.Play();
+    //}
+    //public void MsicSecondLevel(){
+    //    AudioSource source = GetSource();
+    //    source.clip = msicSecondLevel;
+    //    source.spread = 180;
+    //    source.transform.position = new Vector3 (0,0,0);
+    //    source.Play();
+    //}
 
     /*This is the part of getting prefab */  
     int GetClipIndex(int clipNum, int lastPlayed)
