@@ -16,7 +16,7 @@ public class EnemyManager : MonoBehaviour
     Others:
     Enemies does NOT open doors.
     */
-
+    public SpriteRenderer thisEnemy; 
     private Rigidbody rgbd;
     private bool shootingRunning;
     [Header("Attributes")]
@@ -26,12 +26,26 @@ public class EnemyManager : MonoBehaviour
     float timer = 0;
     [Header("States")]
     public int state; // 0 idle 1 detected 2 dead
-    [Header("Animation")]
-    public Animation anim;
+    
+    
     [Header("GameObjects")]
     public GameObject bullet;
     public GameObject leftover;
     public GameObject player;
+    
+    [Header("Walking")]
+    public Sprite leftStep; 
+    public Sprite inMotion;
+    public Sprite rightStep;
+   
+    [Header("Dying Sprites")] 
+    public Sprite Falling; 
+    public Sprite fallingTwo;
+    public Sprite fallingThree;
+    public Sprite fallingFour;
+    public Sprite fallingFive;
+    
+    
 
     void Start()
     {
@@ -59,6 +73,8 @@ public class EnemyManager : MonoBehaviour
             if(leftover != null)
             Instantiate(leftover, gameObject.transform.position + new Vector3(0f, 0f, 0f), gameObject.transform.rotation);
             Destroy(gameObject);
+            // Starts the dying sprites
+            StartCoroutine(Dying());
         }
     }
 
@@ -72,7 +88,9 @@ public class EnemyManager : MonoBehaviour
             rgbd.AddRelativeForce(Vector3.right * movSpeed);
         if (timer > 4 && timer < 5)
             rgbd.AddRelativeForce(Vector3.forward * movSpeed);
-        if(timer > 6) //Intentionally leaves 1 second to pause
+        // walking forward sprites 
+            StartCoroutine(Walking());
+          if(timer > 6) //Intentionally leaves 1 second to pause
         {
             timer = 0;
         }
@@ -88,5 +106,39 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(shootFrequency);
         Instantiate(bullet, gameObject.transform.position + new Vector3(1f,0f,0f), gameObject.transform.rotation);
         shootingRunning = false;
+    }
+
+
+    IEnumerator Walking()
+    {
+        var waitTime = 1.0f; 
+        while (true)
+        {
+            yield return new WaitForSeconds(waitTime);
+            thisEnemy.sprite = leftStep;
+            yield return new WaitForSeconds(waitTime);
+            thisEnemy.sprite = inMotion;
+            yield return new WaitForSeconds(waitTime);
+            thisEnemy.sprite = rightStep;
+            yield return new WaitForSeconds(waitTime);
+            thisEnemy.sprite = inMotion;
+
+        }
+    }
+
+    IEnumerator Dying()
+
+    {
+        var waitTime = .25f;
+        yield return new WaitForSeconds(waitTime);
+        thisEnemy.sprite = Falling;
+        yield return new WaitForSeconds(waitTime);
+        thisEnemy.sprite = fallingTwo; 
+        yield return new WaitForSeconds(waitTime);
+        thisEnemy.sprite = fallingThree;
+        yield return new WaitForSeconds(waitTime);
+        thisEnemy.sprite = fallingFour;
+        yield return new WaitForSeconds(waitTime);
+        thisEnemy.sprite = fallingFive;
     }
 }
