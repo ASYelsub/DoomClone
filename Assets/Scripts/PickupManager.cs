@@ -9,28 +9,29 @@ public class PickupManager : MonoBehaviour
     [Header("Weapon Lists")]
     public List<Guns> weapon; //The list of weapons as prefabs ,0 is fist, 1 is pistol, 2 is shotgun
     public List<bool> weaponUnlock; //The list of bools whether an weapon is unlocked(picked up)
-    
+    public SpriteRenderer weaponImage;
+
     /*Data for this script only!!!*/
-    private int ammo; 
-    private int ammo2; 
-    private int health; 
-    private int armor; 
+    //private int ammo; 
+    //private int ammo2; 
+    //private int health; 
+    //private int armor; 
 
     
     void Start()
     {
 
         PlayerShooting.myGun = (Guns)AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/Pistol.asset", typeof(Guns));
-        ammo = 50;
-        ammo2 = 0;
-        health = 100;
-        armor = 0;
+        PlayerDataHolder.me.ammo = 50;
+        PlayerDataHolder.me.ammo2 = 0;
+        PlayerDataHolder.me.health = 100;
+        PlayerDataHolder.me.armor = 0;
 
     }
 
     private void FixedUpdate()
     {
-        DataExchangeOut();
+        //DataExchangeOut();
         ChangeUI();
     }
 
@@ -39,48 +40,48 @@ public class PickupManager : MonoBehaviour
         SwapGun();
     }
 
-    private void LateUpdate()
-    {
-        DataExchangeIn();
-    }
+    //private void LateUpdate()
+    //{
+    //    DataExchangeIn();
+    //}
 
-    private void DataExchangeIn()
-    {
-        ammo = PlayerDataHolder.me.ammo;
-        ammo2  = PlayerDataHolder.me.ammo2;
-        health = PlayerDataHolder.me.health;
-        armor = PlayerDataHolder.me.armor;
-    }
+    //private void DataExchangeIn()
+    //{
+    //    ammo = PlayerDataHolder.me.ammo;
+    //    ammo2  = PlayerDataHolder.me.ammo2;
+    //    health = PlayerDataHolder.me.health;
+    //    armor = PlayerDataHolder.me.armor;
+    //}
 
-    private void DataExchangeOut()
-    {
-        if (ammo > 200)
-            ammo = 200;
-        if (ammo2 > 50)
-            ammo2 = 50;
+    //private void DataExchangeOut()
+    //{
+    //    if (ammo > 200)
+    //        ammo = 200;
+    //    if (ammo2 > 50)
+    //        ammo2 = 50;
 
-        PlayerDataHolder.me.ammo = ammo;
-        PlayerDataHolder.me.ammo2 = ammo2;
-        PlayerDataHolder.me.health = health;
-        PlayerDataHolder.me.armor = armor;
-    }
+    //    PlayerDataHolder.me.ammo = ammo;
+    //    PlayerDataHolder.me.ammo2 = ammo2;
+    //    PlayerDataHolder.me.health = health;
+    //    PlayerDataHolder.me.armor = armor;
+    //}
 
     void ChangeUI()
     {
-        UIManager.me.BullEdit(ammo);
-        UIManager.me.ShellEdit(ammo2);
+        UIManager.me.BullEdit(PlayerDataHolder.me.ammo);
+        UIManager.me.ShellEdit(PlayerDataHolder.me.ammo2);
         UIManager.me.RocketEdit(0);
         UIManager.me.CellEdit(0);
-        UIManager.me.HealthEdit(health);
-        UIManager.me.ArmorEdit(armor);
+        UIManager.me.HealthEdit(PlayerDataHolder.me.health);
+        UIManager.me.ArmorEdit(PlayerDataHolder.me.armor);
         
         if(PlayerShooting.myGun == weapon[1])
         {
-            UIManager.me.CurrentAmmoEdit(ammo);
+            UIManager.me.CurrentAmmoEdit(PlayerDataHolder.me.ammo);
         }
         else if (PlayerShooting.myGun == weapon[2])
         {
-            UIManager.me.CurrentAmmoEdit(ammo2);
+            UIManager.me.CurrentAmmoEdit(PlayerDataHolder.me.ammo2);
         }
 
     }
@@ -95,10 +96,12 @@ public class PickupManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2) && weaponUnlock[1])
         {
             PlayerShooting.myGun = weapon[1];
+            weaponImage.sprite = PlayerShooting.myGun.idle;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3) && weaponUnlock[2])
         {
             PlayerShooting.myGun = weapon[2];
+            weaponImage.sprite = PlayerShooting.myGun.idle;
         }
     }
 
@@ -108,17 +111,38 @@ public class PickupManager : MonoBehaviour
         print(other.gameObject.name);
         if (other.gameObject.name.Contains("Weapon"))
         {
-            if (other.gameObject.name.Contains("Pistol")&&weaponUnlock[1] != true)
+            if (other.gameObject.name.Contains("Pistol"))
             {
-                PlayerShooting.myGun = weapon[1];
-                weaponUnlock[1] = true;
-                ammo += 50;
+                
+                PlayerDataHolder.me.ammo += 50;
+                if(weaponUnlock[1] != true)
+                {
+                    PlayerShooting.myGun = weapon[1];
+                    weaponUnlock[1] = true;
+                    PlayerShooting.myGun = weapon[1];
+                    weaponImage.sprite = PlayerShooting.myGun.idle;
+                    SoundMan.me.WeaponPickUp(transform.position);
+                }
+                else
+                {
+                    SoundMan.me.ItemPickUp(transform.position);
+                }
             }
-            if (other.gameObject.name.Contains("Shotgun")&& weaponUnlock[2] != true)
+            if (other.gameObject.name.Contains("Shotgun"))
             {
-                PlayerShooting.myGun = weapon[1];
-                weaponUnlock[2] = true;
-                ammo2 += 50;
+                PlayerDataHolder.me.ammo2 += 50;
+                if(weaponUnlock[2] != true)
+                {
+                    PlayerShooting.myGun = weapon[1];
+                    weaponUnlock[2] = true;
+                    PlayerShooting.myGun = weapon[2];
+                    weaponImage.sprite = PlayerShooting.myGun.idle;
+                    SoundMan.me.WeaponPickUp(transform.position);
+                }
+                else
+                {
+                    SoundMan.me.ItemPickUp(transform.position);
+                }
             }
             Destroy(other.gameObject);
         }
@@ -126,27 +150,31 @@ public class PickupManager : MonoBehaviour
 
 		if (other.gameObject.name.Contains("Armor")) //green armor 100 at most, most armor 1(max 200), blue armor (max 200)
 		{
-            armor += other.gameObject.GetComponent<GunHealthManager>().thisHealth.restoreHealth;
+            PlayerDataHolder.me.armor += other.gameObject.GetComponent<GunHealthManager>().thisHealth.restoreHealth;
 			Destroy(other.gameObject);
+            SoundMan.me.PowerUp(transform.position);
         }
 
         if (other.gameObject.name.Contains("Health"))
 		{
-            health += other.gameObject.GetComponent<GunHealthManager>().thisHealth.restoreHealth;
+            PlayerDataHolder.me.health += other.gameObject.GetComponent<GunHealthManager>().thisHealth.restoreHealth;
             Destroy(other.gameObject);
-		}
+            SoundMan.me.ItemPickUp(transform.position);
+        }
 
         if (other.gameObject.name.Contains("Bullet"))
         {
-            if (armor > 0)
+            if (PlayerDataHolder.me.armor > 0)
             {
-                armor -= 10;
+                PlayerDataHolder.me.armor -= 10;
+                SoundMan.me.PlayerInjured(transform.position);
             }
             else
             {
-                health -= 10;
+                PlayerDataHolder.me.health -= 10;
+                SoundMan.me.PlayerInjured(transform.position);
             }
-            health -= 2;
+            //PlayerDataHolder.me.health -= 2;
             Destroy(other.gameObject);
         }
 
@@ -156,11 +184,13 @@ public class PickupManager : MonoBehaviour
             {
                 if (other.gameObject.name.Contains("clip"))
                 {
-                    ammo += 5; //Ammo Clip for Pistol
+                    PlayerDataHolder.me.ammo += 5; //Ammo Clip for Pistol
+                    SoundMan.me.ItemPickUp(transform.position);
                 }
                 if (other.gameObject.name.Contains("box"))
                 {
-                    ammo += 20; //Ammo Clip for Pistol
+                    PlayerDataHolder.me.ammo += 20; //Ammo Clip for Pistol
+                    SoundMan.me.ItemPickUp(transform.position);
                 }
             }
 
@@ -168,11 +198,13 @@ public class PickupManager : MonoBehaviour
             {
                 if (other.gameObject.name.Contains("clip"))
                 {
-                    ammo2 += 5; //Ammo Clip for Pistol
+                    PlayerDataHolder.me.ammo2 += 5; //Ammo Clip for Pistol
+                    SoundMan.me.ItemPickUp(transform.position);
                 }
                 if (other.gameObject.name.Contains("box"))
                 {
-                    ammo2 += 20; //Ammo Clip for Pistol
+                    PlayerDataHolder.me.ammo2 += 20; //Ammo Clip for Pistol
+                    SoundMan.me.ItemPickUp(transform.position);
                 }
             }
 
