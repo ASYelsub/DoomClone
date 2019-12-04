@@ -57,7 +57,7 @@ public class EnemyManager : MonoBehaviour
         else if(state == 1)
         {
             Movement();
-            if (!shootingRunning)
+            if (!shootingRunning && timer > 4 && timer < 5)
             {
                 StartCoroutine(Shooting());
             }
@@ -74,14 +74,15 @@ public class EnemyManager : MonoBehaviour
 
         if (timer > 4 && timer < 5)
         {
-           //StopAllCoroutines();
+            
             StartCoroutine(Walking());
         }
        
 
         if (timer < 2)
         {
-
+          //  StopCoroutine(Walking());
+          StopAllCoroutines();
             StartCoroutine(WalkingLeft()); 
         }
 
