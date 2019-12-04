@@ -8,8 +8,11 @@ public class PlayerShooting : MonoBehaviour
     [Header("System Assign")]
     public HeadBob pistolVSwing;
     public HeadBob pistolHSwing;
+    public List<Guns> weapon;
     public List<GameObject> enemyList;  // the list of enemy
     public LayerMask obstacleLayer; // the layer of obstacles
+    public Transform weaponCam;
+    public Transform mainCam;
 
     public static Guns myGun;
     
@@ -53,8 +56,8 @@ public class PlayerShooting : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Mouse0) && gunCoolDownSec <0.01f ){
             gunCoolDownSec = gunCoolDown;            
             StartCoroutine("Shot");
-
-            foreach(GameObject enemy in enemyList){      //Loop every enemy is the list
+            
+            foreach (GameObject enemy in enemyList){      //Loop every enemy is the list
                 if(enemy == null)
                     break;
                 Vector3 enemyPos = enemy.transform.position;        //Get their position
@@ -86,7 +89,29 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator Shot()
     {
-        SoundMan.me.PistolShoot(transform.position); //for now 
+        Vector3 weaponInto = new Vector3(transform.localPosition.x, .2f, transform.localPosition.z);
+        transform.localPosition = weaponInto;
+        Vector3 weaponCamInto = new Vector3(0, weaponCam.localPosition.y, weaponCam.localPosition.z);
+        weaponCam.localPosition = weaponCamInto;
+        Vector3 mainCamInto = new Vector3(mainCam.localPosition.x, .7f, mainCam.localPosition.z);
+        mainCam.localPosition = mainCamInto;
+
+        if (myGun == weapon[1])
+        {
+            if (PlayerDataHolder.me.ammo <= 0)
+                yield break;
+            PlayerDataHolder.me.ammo--;
+            SoundMan.me.PistolShoot(transform.position);
+        }
+
+        if (myGun == weapon[2])
+        {
+            if (PlayerDataHolder.me.ammo2 <= 0)
+                yield break;
+            PlayerDataHolder.me.ammo2--;
+            SoundMan.me.ShotgunShoot(transform.position);
+        }
+         //for now 
         pistolVSwing.enabled = false;
         pistolHSwing.enabled = false;
         GetComponent<SpriteRenderer>().sprite = shot;
