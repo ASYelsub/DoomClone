@@ -68,6 +68,7 @@ public class EnemyManager : MonoBehaviour
             Instantiate(leftover, gameObject.transform.position + new Vector3(0f, 0f, 0f), gameObject.transform.rotation);
             Destroy(gameObject);
             // Starts the dying sprites
+            
             StartCoroutine(Dying());
         }
 
@@ -80,10 +81,12 @@ public class EnemyManager : MonoBehaviour
 
         if (timer < 2)
         {
-         //   StopAllCoroutines();
+
             StartCoroutine(WalkingLeft()); 
         }
-       
+
+
+        
     }
 
     void Movement()
@@ -128,7 +131,7 @@ public class EnemyManager : MonoBehaviour
             thisEnemy.sprite = walk[i];
             i++; 
             yield return new WaitForSeconds(waitTime);
-            yield return 0; 
+            yield return 5; 
            
         }
     }
@@ -149,19 +152,36 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    IEnumerator WalkingRight()
+    {
+        int i; 
+        i = 0; 
+        var waitTime = .25f; 
+        while (i < walkRight.Length)
+        {
+
+            thisEnemy.sprite = walkRight[i];
+            
+            i++; 
+            yield return new WaitForSeconds(waitTime);
+            yield return 0; 
+           
+        }
+    }
+
     IEnumerator Dying()
 
     {
+        int i;
+        i = 0;
         var waitTime = .25f;
-        yield return new WaitForSeconds(waitTime);
-       // thisEnemy.sprite = Falling;
-        yield return new WaitForSeconds(waitTime);
-       // thisEnemy.sprite = fallingTwo; 
-        yield return new WaitForSeconds(waitTime);
-       // thisEnemy.sprite = fallingThree;
-        yield return new WaitForSeconds(waitTime);
-       // thisEnemy.sprite = fallingFour;
-        yield return new WaitForSeconds(waitTime);
-       // thisEnemy.sprite = fallingFive;
+        while (i < dying.Length)
+        {
+            thisEnemy.sprite = dying[i];
+            i++;
+            yield return new WaitForSeconds(waitTime); 
+            yield return 0;
+       // StopCoroutine(Dying());
+        }
     }
 }
