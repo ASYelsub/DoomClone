@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 6979969620089779662}
   - component: {fileID: 6979969620089779656}
   - component: {fileID: 6979969620089779651}
+  - component: {fileID: 8484747967675587368}
   - component: {fileID: 6979969620089779663}
   m_Layer: 0
   m_Name: EnemyFrank
@@ -150,14 +151,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c026d8b91d88a1745bb07a1304cdf0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisEnemy: {fileID: 0}
   movSpeed: 5
   shootFrequency: 4
   HP: 3
   state: 0
-  anim: {fileID: 0}
   bullet: {fileID: 2226513195688092385, guid: 69fbaf5fa02e89c43bc6956308039636, type: 3}
   leftover: {fileID: 0}
   player: {fileID: 0}
+  leftStep: {fileID: 0}
+  inMotion: {fileID: 0}
+  rightStep: {fileID: 0}
+  Falling: {fileID: 0}
+  fallingTwo: {fileID: 0}
+  fallingThree: {fileID: 0}
+  fallingFour: {fileID: 0}
+  fallingFive: {fileID: 0}
 --- !u!54 &6979969620089779651
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -174,6 +183,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &8484747967675587368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6979969620089779657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce948bb9d40864bd4ac23c67da5278ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!65 &6979969620089779663
 BoxCollider:
   m_ObjectHideFlags: 0
