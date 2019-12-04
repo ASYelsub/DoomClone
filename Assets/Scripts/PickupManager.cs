@@ -9,7 +9,7 @@ public class PickupManager : MonoBehaviour
     [Header("Weapon Lists")]
     public List<Guns> weapon; //The list of weapons as prefabs ,0 is fist, 1 is pistol, 2 is shotgun
     public List<bool> weaponUnlock; //The list of bools whether an weapon is unlocked(picked up)
-    
+
     /*Data for this script only!!!*/
     private int ammo; 
     private int ammo2; 

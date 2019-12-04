@@ -41,7 +41,7 @@ public class PlayerShooting : MonoBehaviour
     private void FixedUpdate()
     {
         GunDataUpdate();
-
+        Debug.Log(idle);
         if (gunCoolDownSec > 0)
         {
             gunCoolDownSec -= Time.deltaTime;
