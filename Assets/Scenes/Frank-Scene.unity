@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -752,19 +752,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f141bb177c284fd9a0dba447522063a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
-  uiManager: {fileID: 0}
-  ammo: 0
-  ammo2: 0
-  health: 20
-  armor: 0
-  currentWeapon: {fileID: 0}
   weapon:
   - {fileID: 0}
-  - {fileID: 6819256553914687163, guid: dc24e98f108ef4030b50a0ddbd39b888, type: 3}
-  - {fileID: 5966224831389308133, guid: c52644893a7c548e6b5190b41df26588, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   weaponUnlock: 0000
-  ps: {fileID: 0}
+  weaponImage: {fileID: 0}
 --- !u!136 &2142196501
 CapsuleCollider:
   m_ObjectHideFlags: 0
