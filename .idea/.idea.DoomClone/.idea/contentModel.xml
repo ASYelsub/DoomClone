@@ -37,20 +37,25 @@
           <e p="HealthObjects.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
+          <e p="Billboarding.cs" t="Include" />
           <e p="BulletMover.cs" t="Include" />
-          <e p="DemoPlayerController.cs" t="Include" />
           <e p="DoorController.cs" t="Include" />
           <e p="EnemyManager.cs" t="Include" />
           <e p="EnemyTriggerManager.cs" t="Include" />
+          <e p="FaceMovement.cs" t="Include" />
           <e p="GunHealthManager.cs" t="Include" />
           <e p="HeadBob.cs" t="Include" />
           <e p="PickupManager.cs" t="Include" />
+          <e p="PlayerController.cs" t="Include" />
+          <e p="PlayerDataHolder.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
           <e p="PlayerMovementAbby.cs" t="Include" />
           <e p="PlayerShooting.cs" t="Include" />
           <e p="Rotator.cs" t="Include" />
+          <e p="SceneManage.cs" t="Include" />
           <e p="SoundMan.cs" t="Include" />
           <e p="UIManager.cs" t="Include" />
+          <e p="UnusedPlayerShooting.cs" t="Include" />
         </e>
       </e>
       <e p="DoomClone.sln" t="IncludeFlat" />

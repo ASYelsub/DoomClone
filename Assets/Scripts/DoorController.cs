@@ -15,10 +15,10 @@ public class DoorController : MonoBehaviour
 
     public bool inRange; 
     //sets minimum and maximum height of the door
-    public float minY = 14.6f;
-    public float maxY = 40f; 
+    public float minY ;
+    public float maxY ;
 
-
+    bool doorClosePlay;
     // Update is called once per frame
     void Update()
     {
@@ -27,9 +27,10 @@ public class DoorController : MonoBehaviour
 
      
            //When player presses space, a message is sent to raise the door. A timer then once raised and when the timer reaches 0 the door closes
-        if (Input.GetKey(KeyCode.Space) && inRange)
+        if (Input.GetKeyDown(KeyCode.Space) && inRange)
         {
-            liftdoor = true; 
+            liftdoor = true;
+            SoundMan.me.DoorOpen(transform.position);
         }
         
         else if (liftdoor)
@@ -43,13 +44,19 @@ public class DoorController : MonoBehaviour
         {
             liftdoor = false; 
             transform.Translate(0, -Lift, 0);
-            inRange = false; 
-
+            if (!doorClosePlay)
+            {
+                SoundMan.me.DoorClose(transform.position);
+                doorClosePlay = true;
+            }
+                
+            inRange = false;
         }
 
         if (transform.position.y <= minY)
         {
             doorTimer = 3;
+            doorClosePlay = false;
         }
     }
 
