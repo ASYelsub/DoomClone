@@ -34,6 +34,7 @@ public class PlayerShooting : MonoBehaviour
         after = myGun.after;
         gunCoolDownSec = gunCoolDown;
         GetComponent<SpriteRenderer>().sprite = idle;
+       // SoundMan.me.MsicFirstLevel(transform.position);
     }
 
     private void Update()
