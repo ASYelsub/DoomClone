@@ -11,6 +11,8 @@ public class PickupManager : MonoBehaviour
     public List<bool> weaponUnlock; //The list of bools whether an weapon is unlocked(picked up)
     public SpriteRenderer weaponImage;
 
+    public bool acidStart; //For the corotine that starts the damage of the player.
+
     /*Data for this script only!!!*/
     //private int ammo; 
     //private int ammo2; 
@@ -210,5 +212,22 @@ public class PickupManager : MonoBehaviour
 
             Destroy(other.gameObject);
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.name.Contains("Acid"))
+        {
+            if(acidStart == false)
+            StartCoroutine(acidDamange());
+        }
+    }
+
+    IEnumerator acidDamange()
+    {
+        acidStart = true;
+        yield return new WaitForSeconds(1);
+        PlayerDataHolder.me.health -= 2;
+        acidStart = false;
     }
 }
