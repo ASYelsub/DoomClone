@@ -251,11 +251,12 @@ public class SoundMan : MonoBehaviour
     }
 
     /*Music stuff */
-    public void MsicFirstLevel(){
+    public void MsicFirstLevel(Vector3 player){
         AudioSource source = GetSource();
         source.clip = msicFirstLevel;
         source.spread = 180;
-        source.transform.position = new Vector3 (0,0,0);
+        source.transform.position = player;
+        source.loop = true;
         source.Play();
     }
     public void MsicSecondLevel(){
