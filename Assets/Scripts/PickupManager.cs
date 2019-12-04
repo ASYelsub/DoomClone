@@ -121,6 +121,11 @@ public class PickupManager : MonoBehaviour
                     weaponUnlock[1] = true;
                     PlayerShooting.myGun = weapon[1];
                     weaponImage.sprite = PlayerShooting.myGun.idle;
+                    SoundMan.me.WeaponPickUp(transform.position);
+                }
+                else
+                {
+                    SoundMan.me.ItemPickUp(transform.position);
                 }
             }
             if (other.gameObject.name.Contains("Shotgun"))
@@ -132,6 +137,11 @@ public class PickupManager : MonoBehaviour
                     weaponUnlock[2] = true;
                     PlayerShooting.myGun = weapon[2];
                     weaponImage.sprite = PlayerShooting.myGun.idle;
+                    SoundMan.me.WeaponPickUp(transform.position);
+                }
+                else
+                {
+                    SoundMan.me.ItemPickUp(transform.position);
                 }
             }
             Destroy(other.gameObject);
@@ -142,25 +152,29 @@ public class PickupManager : MonoBehaviour
 		{
             PlayerDataHolder.me.armor += other.gameObject.GetComponent<GunHealthManager>().thisHealth.restoreHealth;
 			Destroy(other.gameObject);
+            SoundMan.me.PowerUp(transform.position);
         }
 
         if (other.gameObject.name.Contains("Health"))
 		{
             PlayerDataHolder.me.health += other.gameObject.GetComponent<GunHealthManager>().thisHealth.restoreHealth;
             Destroy(other.gameObject);
-		}
+            SoundMan.me.ItemPickUp(transform.position);
+        }
 
         if (other.gameObject.name.Contains("Bullet"))
         {
             if (PlayerDataHolder.me.armor > 0)
             {
                 PlayerDataHolder.me.armor -= 10;
+                SoundMan.me.PlayerInjured(transform.position);
             }
             else
             {
                 PlayerDataHolder.me.health -= 10;
+                SoundMan.me.PlayerInjured(transform.position);
             }
-            PlayerDataHolder.me.health -= 2;
+            //PlayerDataHolder.me.health -= 2;
             Destroy(other.gameObject);
         }
 
@@ -171,10 +185,12 @@ public class PickupManager : MonoBehaviour
                 if (other.gameObject.name.Contains("clip"))
                 {
                     PlayerDataHolder.me.ammo += 5; //Ammo Clip for Pistol
+                    SoundMan.me.ItemPickUp(transform.position);
                 }
                 if (other.gameObject.name.Contains("box"))
                 {
                     PlayerDataHolder.me.ammo += 20; //Ammo Clip for Pistol
+                    SoundMan.me.ItemPickUp(transform.position);
                 }
             }
 
@@ -183,10 +199,12 @@ public class PickupManager : MonoBehaviour
                 if (other.gameObject.name.Contains("clip"))
                 {
                     PlayerDataHolder.me.ammo2 += 5; //Ammo Clip for Pistol
+                    SoundMan.me.ItemPickUp(transform.position);
                 }
                 if (other.gameObject.name.Contains("box"))
                 {
                     PlayerDataHolder.me.ammo2 += 20; //Ammo Clip for Pistol
+                    SoundMan.me.ItemPickUp(transform.position);
                 }
             }
 
