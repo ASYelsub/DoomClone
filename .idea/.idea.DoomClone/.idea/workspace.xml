@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3209837-a8cd-4682-8a66-25c09b72ae06" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Ammunition.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Enemysprite1.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Enemysprite1.gif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DoomClone/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DoomClone/.idea/contentModel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/floor.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/floor.fbx.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DoomClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DoomClone/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ginele's Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ginele's Scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DoomEnemy1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/DoomEnemy1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Ammunition.meta" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +24,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BulletMover.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GunHealthManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Prefab/FinalScenePrefab/EnemyFrank.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerMovementAbby.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickupManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ScriptableObjects/HealthObjects.cs" root0="FORCE_HIGHLIGHTING" />
@@ -122,6 +121,8 @@
       <workItem from="1575322041383" duration="4000" />
       <workItem from="1575322163119" duration="159000" />
       <workItem from="1575398163676" duration="622000" />
+      <workItem from="1575494855860" duration="2749000" />
+      <workItem from="1575500550966" duration="843000" />
     </task>
     <servers />
   </component>
