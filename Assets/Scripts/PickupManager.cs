@@ -152,13 +152,33 @@ public class PickupManager : MonoBehaviour
 
 		if (other.gameObject.name.Contains("Armor")) //green armor 100 at most, most armor 1(max 200), blue armor (max 200)
 		{
-            PlayerDataHolder.me.armor += other.gameObject.GetComponent<GunHealthManager>().thisHealth.restoreHealth;
-			Destroy(other.gameObject);
-            SoundMan.me.PowerUp(transform.position);
+            if (other.gameObject.name.Contains("Green")&& PlayerDataHolder.me.armor<=100)
+            {
+                PlayerDataHolder.me.armor = 100;
+			    Destroy(other.gameObject);
+                SoundMan.me.PowerUp(transform.position);
+            }
+            if (other.gameObject.name.Contains("Blue"))
+            {
+                PlayerDataHolder.me.armor = 200;
+                Destroy(other.gameObject);
+                SoundMan.me.PowerUp(transform.position);
+            }
+            if (other.gameObject.name.Contains("Bonus"))
+            {
+                PlayerDataHolder.me.armor +=5;
+                Destroy(other.gameObject);
+                SoundMan.me.ItemPickUp(transform.position);
+            }
+
         }
 
         if (other.gameObject.name.Contains("Health"))
 		{
+            if (other.gameObject.name.Contains("Health"))
+            {
+
+            }
             PlayerDataHolder.me.health += other.gameObject.GetComponent<GunHealthManager>().thisHealth.restoreHealth;
             Destroy(other.gameObject);
             SoundMan.me.ItemPickUp(transform.position);
@@ -184,12 +204,12 @@ public class PickupManager : MonoBehaviour
         {
             if (other.gameObject.name.Contains("Pistol"))
             {
-                if (other.gameObject.name.Contains("clip"))
+                if (other.gameObject.name.Contains("Clip"))
                 {
                     PlayerDataHolder.me.ammo += 5; //Ammo Clip for Pistol
                     SoundMan.me.ItemPickUp(transform.position);
                 }
-                if (other.gameObject.name.Contains("box"))
+                if (other.gameObject.name.Contains("Box"))
                 {
                     PlayerDataHolder.me.ammo += 20; //Ammo Clip for Pistol
                     SoundMan.me.ItemPickUp(transform.position);
@@ -198,7 +218,7 @@ public class PickupManager : MonoBehaviour
 
             if (other.gameObject.name.Contains("Shotgun"))
             {
-                if (other.gameObject.name.Contains("clip"))
+                if (other.gameObject.name.Contains("Clip"))
                 {
                     PlayerDataHolder.me.ammo2 += 5; //Ammo Clip for Pistol
                     SoundMan.me.ItemPickUp(transform.position);

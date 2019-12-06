@@ -92,8 +92,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.4871912, y: 0.90540576, z: 0.7211509}
-  m_Center: {x: 0.017449856, y: 0.09822261, z: -0.0006248951}
+  m_Size: {x: 3.487191, y: 0.9054058, z: 3.606222}
+  m_Center: {x: 0.01744995, y: 0.098222636, z: -0.00029945374}
 --- !u!114 &5966224831389308134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +127,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5966224831389308058}
     m_Modifications:
+    - target: {fileID: 1214845973938226224, guid: a8fbf5cbd06978f4c901ba669c7c19a5,
+        type: 3}
+      propertyPath: m_Name
+      value: Shotgun
+      objectReference: {fileID: 0}
     - target: {fileID: 1214845973937870864, guid: a8fbf5cbd06978f4c901ba669c7c19a5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -196,11 +201,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1214845973938226224, guid: a8fbf5cbd06978f4c901ba669c7c19a5,
-        type: 3}
-      propertyPath: m_Name
-      value: Shotgun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8fbf5cbd06978f4c901ba669c7c19a5, type: 3}
