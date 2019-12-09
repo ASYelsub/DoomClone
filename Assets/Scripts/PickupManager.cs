@@ -28,7 +28,7 @@ public class PickupManager : MonoBehaviour
         PlayerDataHolder.me.ammo2 = 0;
         PlayerDataHolder.me.health = 100;
         PlayerDataHolder.me.armor = 0;
-
+        UIManager.me.UnlockPistol();
     }
 
     private void FixedUpdate()
@@ -115,7 +115,7 @@ public class PickupManager : MonoBehaviour
         {
             if (other.gameObject.name.Contains("Pistol"))
             {
-                
+                UIManager.me.UnlockPistol();
                 PlayerDataHolder.me.ammo += 50;
                 if(weaponUnlock[1] != true)
                 {
@@ -132,6 +132,7 @@ public class PickupManager : MonoBehaviour
             }
             if (other.gameObject.name.Contains("Shotgun"))
             {
+                UIManager.me.UnlockShotgun();
                 PlayerDataHolder.me.ammo2 += 50;
                 if(weaponUnlock[2] != true)
                 {
