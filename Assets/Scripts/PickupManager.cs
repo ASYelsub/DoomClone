@@ -11,6 +11,8 @@ public class PickupManager : MonoBehaviour
     public List<bool> weaponUnlock; //The list of bools whether an weapon is unlocked(picked up)
     public SpriteRenderer weaponImage;
 
+    public bool acidStart; //For the corotine that starts the damage of the player.
+
     /*Data for this script only!!!*/
     //private int ammo; 
     //private int ammo2; 
@@ -150,13 +152,33 @@ public class PickupManager : MonoBehaviour
 
 		if (other.gameObject.name.Contains("Armor")) //green armor 100 at most, most armor 1(max 200), blue armor (max 200)
 		{
-            PlayerDataHolder.me.armor += other.gameObject.GetComponent<GunHealthManager>().thisHealth.restoreHealth;
-			Destroy(other.gameObject);
-            SoundMan.me.PowerUp(transform.position);
+            if (other.gameObject.name.Contains("Green")&& PlayerDataHolder.me.armor<=100)
+            {
+                PlayerDataHolder.me.armor = 100;
+			    Destroy(other.gameObject);
+                SoundMan.me.PowerUp(transform.position);
+            }
+            if (other.gameObject.name.Contains("Blue"))
+            {
+                PlayerDataHolder.me.armor = 200;
+                Destroy(other.gameObject);
+                SoundMan.me.PowerUp(transform.position);
+            }
+            if (other.gameObject.name.Contains("Bonus"))
+            {
+                PlayerDataHolder.me.armor +=5;
+                Destroy(other.gameObject);
+                SoundMan.me.ItemPickUp(transform.position);
+            }
+
         }
 
         if (other.gameObject.name.Contains("Health"))
 		{
+            if (other.gameObject.name.Contains("Health"))
+            {
+
+            }
             PlayerDataHolder.me.health += other.gameObject.GetComponent<GunHealthManager>().thisHealth.restoreHealth;
             Destroy(other.gameObject);
             SoundMan.me.ItemPickUp(transform.position);
@@ -182,12 +204,12 @@ public class PickupManager : MonoBehaviour
         {
             if (other.gameObject.name.Contains("Pistol"))
             {
-                if (other.gameObject.name.Contains("clip"))
+                if (other.gameObject.name.Contains("Clip"))
                 {
                     PlayerDataHolder.me.ammo += 5; //Ammo Clip for Pistol
                     SoundMan.me.ItemPickUp(transform.position);
                 }
-                if (other.gameObject.name.Contains("box"))
+                if (other.gameObject.name.Contains("Box"))
                 {
                     PlayerDataHolder.me.ammo += 20; //Ammo Clip for Pistol
                     SoundMan.me.ItemPickUp(transform.position);
@@ -196,7 +218,7 @@ public class PickupManager : MonoBehaviour
 
             if (other.gameObject.name.Contains("Shotgun"))
             {
-                if (other.gameObject.name.Contains("clip"))
+                if (other.gameObject.name.Contains("Clip"))
                 {
                     PlayerDataHolder.me.ammo2 += 5; //Ammo Clip for Pistol
                     SoundMan.me.ItemPickUp(transform.position);
@@ -210,5 +232,22 @@ public class PickupManager : MonoBehaviour
 
             Destroy(other.gameObject);
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.name.Contains("Acid"))
+        {
+            if(acidStart == false)
+            StartCoroutine(acidDamange());
+        }
+    }
+
+    IEnumerator acidDamange()
+    {
+        acidStart = true;
+        yield return new WaitForSeconds(1);
+        PlayerDataHolder.me.health -= 2;
+        acidStart = false;
     }
 }
