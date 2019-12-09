@@ -13,6 +13,8 @@ public class PickupManager : MonoBehaviour
 
     public bool acidStart; //For the corotine that starts the damage of the player.
 
+    public int timePassed;
+
     /*Data for this script only!!!*/
     //private int ammo; 
     //private int ammo2; 
@@ -40,6 +42,8 @@ public class PickupManager : MonoBehaviour
     private void Update()
     {
         SwapGun();
+        timePassed += (int)Time.deltaTime;
+        FinalSceneUIManager.instance.uisInts[3] = timePassed; // counting the time since the begining
     }
 
     //private void LateUpdate()
@@ -113,6 +117,7 @@ public class PickupManager : MonoBehaviour
         print(other.gameObject.name);
         if (other.gameObject.name.Contains("Weapon"))
         {
+            FinalSceneUIManager.instance.uisInts[1] += 10; // add 10% to items gained
             if (other.gameObject.name.Contains("Pistol"))
             {
                 
@@ -152,6 +157,7 @@ public class PickupManager : MonoBehaviour
 
 		if (other.gameObject.name.Contains("Armor")) //green armor 100 at most, most armor 1(max 200), blue armor (max 200)
 		{
+            FinalSceneUIManager.instance.uisInts[1] += 10; // add 10% to items gained
             if (other.gameObject.name.Contains("Green")&& PlayerDataHolder.me.armor<=100)
             {
                 PlayerDataHolder.me.armor = 100;
@@ -175,6 +181,7 @@ public class PickupManager : MonoBehaviour
 
         if (other.gameObject.name.Contains("Health"))
 		{
+            FinalSceneUIManager.instance.uisInts[1] += 10; // add 10% to items gained
             if (other.gameObject.name.Contains("Health"))
             {
 
@@ -186,6 +193,7 @@ public class PickupManager : MonoBehaviour
 
         if (other.gameObject.name.Contains("Bullet"))
         {
+            FinalSceneUIManager.instance.uisInts[1] += 10; // add 10% to items gained
             if (PlayerDataHolder.me.armor > 0)
             {
                 PlayerDataHolder.me.armor -= 10;
@@ -202,6 +210,7 @@ public class PickupManager : MonoBehaviour
 
         if (other.gameObject.name.Contains("Ammo"))
         {
+            FinalSceneUIManager.instance.uisInts[1] += 10; // add 10% to items gained
             if (other.gameObject.name.Contains("Pistol"))
             {
                 if (other.gameObject.name.Contains("Clip"))
@@ -229,9 +238,18 @@ public class PickupManager : MonoBehaviour
                     SoundMan.me.ItemPickUp(transform.position);
                 }
             }
-
             Destroy(other.gameObject);
         }
+        if (other.gameObject.name.Contains("SecretCollider"))
+        {
+            FinalSceneUIManager.instance.uisInts[0] += 10; // add 10% to enemies killed
+        }
+
+        if (other.gameObject.name.Contains("FinalEnters"))
+        {
+            FinalSceneUIManager.instance.canShow = true;
+        }
+
     }
 
     private void OnTriggerStay(Collider other)
