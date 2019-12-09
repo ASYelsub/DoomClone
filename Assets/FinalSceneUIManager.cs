@@ -24,7 +24,7 @@ public class FinalSceneUIManager : MonoBehaviour
         uis[0].text = uisInts[0].ToString() + "%";
         uis[1].text = uisInts[1].ToString() + "%";
         uis[2].text = uisInts[2].ToString() + "%";
-        uis[3].text = uisInts[3].ToString() + "s";
+        uis[3].text = uisInts[3].ToString() + " s";
         if (canShow && !anim.isPlaying)
         {
             anim.Play();

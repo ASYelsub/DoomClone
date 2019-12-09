@@ -10,6 +10,7 @@ public class PlayerShooting : MonoBehaviour
     public HeadBob pistolHSwing;
     public List<Guns> weapon;
     public List<GameObject> enemyList;  // the list of enemy
+    public List<GameObject> barrelList;
     public LayerMask obstacleLayer; // the layer of obstacles
     public Transform weaponCam;
     public Transform mainCam;
@@ -67,12 +68,37 @@ public class PlayerShooting : MonoBehaviour
                 myPos.y = 0;
 
                 Vector3 targetDir = enemyPos-myPos;             //this is the vector between enemy and player
-                float degreeWithin = 30f/(Vector3.Distance(myPos, enemyPos)); //30 is the k 
+                float degreeWithin = 40f/(Vector3.Distance(myPos, enemyPos)); //30 is the k 
 
                 if(Vector3.Angle(targetDir,transform.forward)<degreeWithin){  
                     if(!Physics.Linecast(transform.position,enemy.transform.position,obstacleLayer) ){ // it detects if there are obstacles between them
                         Debug.Log("ShotOnTarget!");
-                        enemy.GetComponent<EnemyManager>().HP -= damage;                   
+                        enemy.GetComponent<EnemyManager>().HP -= damage;
+                        SoundMan.me.ImpEnemyInjured(enemy.transform.position);
+                    }
+                }
+            }
+
+
+
+            foreach (GameObject barrel in barrelList)
+            {      //Loop every enemy is the list
+                if (barrel == null)
+                    break;
+                Vector3 barrelPos = barrel.transform.position;        //Get their position
+                Vector3 myPos = transform.position;
+                barrelPos.y = 0;                                 // the reason set y to zero is that we want to get a horizontal vector
+                myPos.y = 0;
+
+                Vector3 targetDir = barrelPos - myPos;             //this is the vector between enemy and player
+                float degreeWithin = 40f / (Vector3.Distance(myPos, barrelPos)); //30 is the k 
+
+                if (Vector3.Angle(targetDir, transform.forward) < degreeWithin)
+                {
+                    if (!Physics.Linecast(transform.position, barrel.transform.position, obstacleLayer))
+                    { // it detects if there are obstacles between them
+                        Debug.Log("ShotOnTarget!");
+                        barrel.GetComponent<BarrelScript>().health -= damage;
                     }
                 }
             }

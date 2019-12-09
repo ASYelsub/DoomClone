@@ -28,6 +28,16 @@ public class UIManager : MonoBehaviour
         me = this;
     }
 
+    public void UnlockPistol()
+    {
+        gunText[0].color = Color.yellow;
+    }
+
+    public void UnlockShotgun()
+    {
+        gunText[1].color = Color.yellow;
+    }
+
     public void BullEdit(int bull)
     {
         bullText.text = bull.ToString() + "/200";

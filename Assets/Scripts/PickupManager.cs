@@ -13,7 +13,7 @@ public class PickupManager : MonoBehaviour
 
     public bool acidStart; //For the corotine that starts the damage of the player.
 
-    public int timePassed;
+    public float timePassed;
 
     /*Data for this script only!!!*/
     //private int ammo; 
@@ -30,7 +30,7 @@ public class PickupManager : MonoBehaviour
         PlayerDataHolder.me.ammo2 = 0;
         PlayerDataHolder.me.health = 100;
         PlayerDataHolder.me.armor = 0;
-
+        UIManager.me.UnlockPistol();
     }
 
     private void FixedUpdate()
@@ -42,8 +42,8 @@ public class PickupManager : MonoBehaviour
     private void Update()
     {
         SwapGun();
-        timePassed += (int)Time.deltaTime;
-        FinalSceneUIManager.instance.uisInts[3] = timePassed; // counting the time since the begining
+        timePassed += Time.deltaTime;
+       
     }
 
     //private void LateUpdate()
@@ -120,7 +120,7 @@ public class PickupManager : MonoBehaviour
             FinalSceneUIManager.instance.uisInts[1] += 10; // add 10% to items gained
             if (other.gameObject.name.Contains("Pistol"))
             {
-                
+                UIManager.me.UnlockPistol();
                 PlayerDataHolder.me.ammo += 50;
                 if(weaponUnlock[1] != true)
                 {
@@ -137,6 +137,7 @@ public class PickupManager : MonoBehaviour
             }
             if (other.gameObject.name.Contains("Shotgun"))
             {
+                UIManager.me.UnlockShotgun();
                 PlayerDataHolder.me.ammo2 += 50;
                 if(weaponUnlock[2] != true)
                 {
@@ -247,6 +248,7 @@ public class PickupManager : MonoBehaviour
 
         if (other.gameObject.name.Contains("FinalEnters"))
         {
+            FinalSceneUIManager.instance.uisInts[3] = (int)timePassed; // counting the time since the begining
             FinalSceneUIManager.instance.canShow = true;
         }
 

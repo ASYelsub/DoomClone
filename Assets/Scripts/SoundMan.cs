@@ -126,7 +126,7 @@ public class SoundMan : MonoBehaviour
     /*Enemy use guns */
     public void GunEnemySight(Vector3 pos){
         AudioSource source = GetSource();
-        int clipNum = lastGunEnemySight;
+        int clipNum = GetClipIndex(gunEnemySight.Length, lastGunEnemySight);
         lastGunEnemySight = clipNum;
         source.clip = gunEnemySight[clipNum];
         source.transform.position = pos;
@@ -134,7 +134,7 @@ public class SoundMan : MonoBehaviour
     }
     public void GunEnemyDeath(Vector3 pos){
         AudioSource source = GetSource();
-        int clipNum = lastGunEnemyDeath;
+        int clipNum = GetClipIndex(gunEnemyDeath.Length, lastGunEnemyDeath);
         lastGunEnemyDeath = clipNum;
         source.clip = gunEnemyDeath[clipNum];
         source.transform.position = pos;
@@ -161,7 +161,7 @@ public class SoundMan : MonoBehaviour
     /*Imp enemy uses fireball */
     public void ImpEnemySight(Vector3 pos){
         AudioSource source = GetSource();
-        int clipNum = lastImpEnemySight;
+        int clipNum = GetClipIndex(impEnemySight.Length, lastImpEnemySight);
         lastImpEnemySight = clipNum;
         source.clip = impEnemySight[clipNum];
         source.transform.position = pos;
@@ -169,7 +169,7 @@ public class SoundMan : MonoBehaviour
     }
     public void ImpEnemyDeath(Vector3 pos){
         AudioSource source = GetSource();
-        int clipNum = lastImpEnemyDeath;
+        int clipNum = GetClipIndex(impEnemyDeath.Length, lastImpEnemyDeath);
         lastImpEnemyDeath = clipNum;
         source.clip = impEnemyDeath[clipNum];
         source.transform.position = pos;
