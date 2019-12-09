@@ -81,8 +81,8 @@ public class EnemyManager : MonoBehaviour
 
         if (timer < 2)
         {
-          //  StopCoroutine(Walking());
-          StopAllCoroutines();
+            StopCoroutine(Walking());
+       //   StopAllCoroutines();
             StartCoroutine(WalkingLeft()); 
         }
 
