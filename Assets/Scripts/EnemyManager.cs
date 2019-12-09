@@ -49,6 +49,46 @@ public class EnemyManager : MonoBehaviour
 
     void Update()
     {
+        if (timer > 4 && timer < 5)
+        {
+            //StopAllCoroutines();
+         
+            StartCoroutine(Walking());
+        }
+        else
+        {
+            StopCoroutine(Walking());
+        }
+
+        if (timer < 2)
+        {
+          
+            StartCoroutine(WalkingLeft());
+            
+        }
+        else
+        {
+           StopCoroutine(WalkingLeft());
+        }
+        
+        if (timer > 2 && timer < 4)
+        {
+       
+            thisEnemy.flipX = true;
+            StartCoroutine(WalkingLeft());
+            
+        }
+        else
+        {
+            thisEnemy.flipX = false; 
+            StopCoroutine(WalkingLeft());
+        }
+
+       
+        
+        
+        
+        
         if(state == 0)
         {
             StopCoroutine(Shooting());
@@ -72,19 +112,10 @@ public class EnemyManager : MonoBehaviour
             StartCoroutine(Dying());
         }
 
-        if (timer > 4 && timer < 5)
-        {
-            
-            StartCoroutine(Walking());
-        }
+      
        
 
-        if (timer < 2)
-        {
-            StopCoroutine(Walking());
-       //   StopAllCoroutines();
-            StartCoroutine(WalkingLeft()); 
-        }
+       
 
 
         
@@ -100,6 +131,7 @@ public class EnemyManager : MonoBehaviour
             rgbd.AddRelativeForce(Vector3.right * movSpeed);
         if (timer > 4 && timer < 5)
             rgbd.AddRelativeForce(Vector3.forward * movSpeed);
+       
 
 
         if(timer > 6) //Intentionally leaves 1 second to pause
@@ -135,6 +167,8 @@ public class EnemyManager : MonoBehaviour
             yield return 5; 
            
         }
+
+      //  StartCoroutine(Walking());
     }
 
     IEnumerator WalkingLeft()
@@ -153,22 +187,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    IEnumerator WalkingRight()
-    {
-        int i; 
-        i = 0; 
-        var waitTime = .25f; 
-        while (i < walkRight.Length)
-        {
-
-            thisEnemy.sprite = walkRight[i];
-            
-            i++; 
-            yield return new WaitForSeconds(waitTime);
-            yield return 0; 
-           
-        }
-    }
+   
 
     IEnumerator Dying()
 
@@ -184,5 +203,6 @@ public class EnemyManager : MonoBehaviour
             yield return 0;
        // StopCoroutine(Dying());
         }
+        
     }
 }
