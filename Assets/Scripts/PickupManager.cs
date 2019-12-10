@@ -185,11 +185,15 @@ public class PickupManager : MonoBehaviour
         if (other.gameObject.name.Contains("Health"))
 		{
             FinalSceneUIManager.instance.uisInts[1] += 10; // add 10% to items gained
-            if (other.gameObject.name.Contains("Health"))
+            if (other.gameObject.name.Contains("Bonus"))
             {
-
+                PlayerDataHolder.me.health += 5;
             }
-            PlayerDataHolder.me.health += other.gameObject.GetComponent<GunHealthManager>().thisHealth.restoreHealth;
+            if (other.gameObject.name.Contains("Kits"))
+            {
+                PlayerDataHolder.me.health = 100;
+            }
+
             Destroy(other.gameObject);
             SoundMan.me.ItemPickUp(transform.position);
         }
@@ -269,7 +273,8 @@ public class PickupManager : MonoBehaviour
     {
         acidStart = true;
         yield return new WaitForSeconds(1);
-        PlayerDataHolder.me.health -= 2;
+        PlayerDataHolder.me.health -= 10;
+        SoundMan.me.PlayerInjured(transform.position);
         acidStart = false;
     }
 }
