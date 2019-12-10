@@ -128,6 +128,7 @@ public class PlayerShooting : MonoBehaviour
             if (PlayerDataHolder.me.ammo <= 0)
                 yield break;
             PlayerDataHolder.me.ammo--;
+            Debug.Log("HAHAHAHAHAHAH");
             SoundMan.me.PistolShoot(transform.position);
         }
 

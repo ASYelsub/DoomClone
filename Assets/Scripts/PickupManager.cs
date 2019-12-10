@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine.UI;
 
 public class PickupManager : MonoBehaviour
@@ -25,11 +25,13 @@ public class PickupManager : MonoBehaviour
     void Start()
     {
 
-        PlayerShooting.myGun = (Guns)AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/Pistol.asset", typeof(Guns));
+        //PlayerShooting.myGun = Resources.Load<Guns>("Pistol"); //(Guns)AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/Pistol.asset", typeof(Guns));
         PlayerDataHolder.me.ammo = 50;
         PlayerDataHolder.me.ammo2 = 0;
         PlayerDataHolder.me.health = 100;
         PlayerDataHolder.me.armor = 0;
+        PlayerShooting.myGun = weapon[1];
+        weaponImage.sprite = PlayerShooting.myGun.idle;
         UIManager.me.UnlockPistol();
     }
 
