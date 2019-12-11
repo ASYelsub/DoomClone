@@ -55,7 +55,7 @@ public class PlayerShooting : MonoBehaviour
 
     void DetectNShoot(){            //This method is used to detect enemy on different heights
         
-        if(Input.GetKeyDown(KeyCode.Mouse0) && gunCoolDownSec <0.01f ){
+        if((Input.GetKeyDown(KeyCode.Mouse0)) || (Input.GetKeyDown(KeyCode.Return)) && gunCoolDownSec <0.01f ){
             gunCoolDownSec = gunCoolDown;            
             StartCoroutine("Shot");
             
