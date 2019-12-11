@@ -63,7 +63,7 @@ public class EnemyManager : MonoBehaviour
             // shoot once when see player
             if (firstBullet)
             {
-                Instantiate(bullet, gameObject.transform.position + new Vector3(6f, 0f, 0f), gameObject.transform.rotation);
+                Instantiate(bullet, gameObject.transform.position + new Vector3(3f, 0f, 0f), gameObject.transform.rotation);
                 firstBullet = false;
             }
             if (!shootingRunning && timer > 4 && timer < 5)
