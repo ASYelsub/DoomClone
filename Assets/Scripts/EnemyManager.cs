@@ -117,7 +117,7 @@ public class EnemyManager : MonoBehaviour
     {
         shootingRunning = true;
         yield return new WaitForSeconds(shootFrequency);
-        Instantiate(bullet, gameObject.transform.position + new Vector3(1f,0f,0f), gameObject.transform.rotation);
+        Instantiate(bullet, gameObject.transform.position + new Vector3(6f,0f,0f), gameObject.transform.rotation);
         shootingRunning = false;
     }
 
