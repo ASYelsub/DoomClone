@@ -28,6 +28,8 @@ public class EnemyManager : MonoBehaviour
     public float movSpeed;
     public float shootFrequency; //The time interval of shooting a bullet
     public int HP;
+	public float randomizer; // random the enemies a little bit
+    public bool firstBullet;
     float timer = 0;
     [Header("States")]
     public int state; // 0 idle 1 detected 2 dead
@@ -45,6 +47,7 @@ public class EnemyManager : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         rgbd = gameObject.GetComponent<Rigidbody>();
+        randomizer = Random.Range(0, 1f);
     }
 
     void Update()
@@ -97,6 +100,12 @@ public class EnemyManager : MonoBehaviour
         else if(state == 1)
         {
             Movement();
+            // shoot once when see player
+            if (firstBullet)
+            {
+                Instantiate(bullet, gameObject.transform.position + new Vector3(6f, 0f, 0f), gameObject.transform.rotation);
+                firstBullet = false;
+            }
             if (!shootingRunning && timer > 4 && timer < 5)
             {
                 StartCoroutine(Shooting());
@@ -126,16 +135,16 @@ public class EnemyManager : MonoBehaviour
     {
         timer += Time.deltaTime;
         transform.LookAt(player.transform);
-        if(timer < 2)
+        if(timer < (2+ randomizer))
             rgbd.AddRelativeForce(Vector3.left * movSpeed);
-        if (timer > 2 && timer < 4)
+        if (timer > (2+randomizer) && timer < (4+randomizer))
             rgbd.AddRelativeForce(Vector3.right * movSpeed);
-        if (timer > 4 && timer < 5)
+        if (timer > (4+randomizer) && timer < (5+randomizer))
             rgbd.AddRelativeForce(Vector3.forward * movSpeed);
        
 
 
-        if(timer > 6) //Intentionally leaves 1 second to pause
+        if(timer > (6+randomizer)) //Intentionally leaves 1 second to pause
         {
             timer = 0;
         }
