@@ -61,7 +61,7 @@ public class PlayerShooting : MonoBehaviour
             
             foreach (GameObject enemy in enemyList){      //Loop every enemy is the list
                 if(enemy == null)
-                    break;
+                    continue;
                 Vector3 enemyPos = enemy.transform.position;        //Get their position
                 Vector3 myPos = transform.position;                 
                 enemyPos.y = 0;                                 // the reason set y to zero is that we want to get a horizontal vector
