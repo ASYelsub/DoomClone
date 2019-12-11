@@ -5,7 +5,7 @@ using UnityEngine;
 public class BarrelScript : MonoBehaviour
 {
     public int health;
-
+    public GameObject pS;
 
     private void Start()
     {
@@ -17,6 +17,8 @@ public class BarrelScript : MonoBehaviour
         if (health <= 0)
         {
             SoundMan.me.BarrelExplode(transform.position);
+            Instantiate(pS, transform.position,transform.rotation);
+            Destroy(gameObject);
         }
     }
 }
