@@ -122,6 +122,8 @@ MonoBehaviour:
   movSpeed: 5
   shootFrequency: 4
   HP: 3
+  randomizer: 0
+  firstBullet: 1
   state: 0
   bullet: {fileID: 2226513195688092385, guid: 69fbaf5fa02e89c43bc6956308039636, type: 3}
   leftover: {fileID: 0}
