@@ -16,27 +16,38 @@ public class EnemyManager : MonoBehaviour
     Others:
     Enemies does NOT open doors.
     */
-
+    public SpriteRenderer thisEnemy;
+    public Sprite[] walk;
+    public Sprite[] dying;
+    public Sprite[] walkLeft;
+    public Sprite[] walkRight; 
+    
     private Rigidbody rgbd;
     private bool shootingRunning;
     [Header("Attributes")]
     public float movSpeed;
     public float shootFrequency; //The time interval of shooting a bullet
     public int HP;
+	public float randomizer; // random the enemies a little bit
+    public bool firstBullet;
     float timer = 0;
     [Header("States")]
     public int state; // 0 idle 1 detected 2 dead
-    [Header("Animation")]
-    public Animation anim;
+    
+    
     [Header("GameObjects")]
     public GameObject bullet;
     public GameObject leftover;
     public GameObject player;
+    
+ 
+    
 
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         rgbd = gameObject.GetComponent<Rigidbody>();
+        randomizer = Random.Range(0, 1f);
     }
 
     void Update()
@@ -49,7 +60,13 @@ public class EnemyManager : MonoBehaviour
         else if(state == 1)
         {
             Movement();
-            if (!shootingRunning)
+            // shoot once when see player
+            if (firstBullet)
+            {
+                Instantiate(bullet, gameObject.transform.position + new Vector3(6f, 0f, 0f), gameObject.transform.rotation);
+                firstBullet = false;
+            }
+            if (!shootingRunning && timer > 4 && timer < 5)
             {
                 StartCoroutine(Shooting());
             }
@@ -58,21 +75,44 @@ public class EnemyManager : MonoBehaviour
         {
             if(leftover != null)
             Instantiate(leftover, gameObject.transform.position + new Vector3(0f, 0f, 0f), gameObject.transform.rotation);
+            FinalSceneUIManager.instance.uisInts[0] += 10; // add 100% to secret entered
+            StartCoroutine(Dying());
             Destroy(gameObject);
+            
+            
         }
+
+        if (timer > 4 && timer < 5)
+        {
+            
+            StartCoroutine(Walking());
+        }
+       
+
+        if (timer < 2)
+        {
+            StopCoroutine(Walking());
+       //   StopAllCoroutines();
+            StartCoroutine(WalkingLeft()); 
+        }
+
+
+        
     }
 
     void Movement()
     {
         timer += Time.deltaTime;
         transform.LookAt(player.transform);
-        if(timer < 2)
+        if(timer < (2+ randomizer))
             rgbd.AddRelativeForce(Vector3.left * movSpeed);
-        if (timer > 2 && timer < 4)
+        if (timer > (2+randomizer) && timer < (4+randomizer))
             rgbd.AddRelativeForce(Vector3.right * movSpeed);
-        if (timer > 4 && timer < 5)
+        if (timer > (4+randomizer) && timer < (5+randomizer))
             rgbd.AddRelativeForce(Vector3.forward * movSpeed);
-        if(timer > 6) //Intentionally leaves 1 second to pause
+
+
+        if(timer > (6+randomizer)) //Intentionally leaves 1 second to pause
         {
             timer = 0;
         }
@@ -86,7 +126,73 @@ public class EnemyManager : MonoBehaviour
     {
         shootingRunning = true;
         yield return new WaitForSeconds(shootFrequency);
-        Instantiate(bullet, gameObject.transform.position + new Vector3(1f,0f,0f), gameObject.transform.rotation);
+        Instantiate(bullet, gameObject.transform.position + new Vector3(6f,0f,0f), gameObject.transform.rotation);
         shootingRunning = false;
+    }
+
+
+    IEnumerator Walking()
+    {
+        int i; 
+        i = 0; 
+        var waitTime = .25f; 
+        while (i < walk.Length)
+        {
+
+            thisEnemy.sprite = walk[i];
+            i++; 
+            yield return new WaitForSeconds(waitTime);
+            yield return 5; 
+           
+        }
+    }
+
+    IEnumerator WalkingLeft()
+    {
+        int i; 
+        i = 0; 
+        var waitTime = .25f; 
+        while (i < walkLeft.Length)
+        {
+
+            thisEnemy.sprite = walkLeft[i];
+            i++; 
+            yield return new WaitForSeconds(waitTime);
+            yield return 0; 
+           
+        }
+    }
+
+    IEnumerator WalkingRight()
+    {
+        int i; 
+        i = 0; 
+        var waitTime = .25f; 
+        while (i < walkRight.Length)
+        {
+
+            thisEnemy.sprite = walkRight[i];
+            
+            i++; 
+            yield return new WaitForSeconds(waitTime);
+            yield return 0; 
+           
+        }
+    }
+
+    IEnumerator Dying()
+
+    {
+        int i;
+        i = 0;
+        var waitTime = .25f;
+        while (i < dying.Length)
+        {
+            thisEnemy.sprite = dying[i];
+            i++;
+            yield return new WaitForSeconds(waitTime); 
+            yield return 0;
+       // StopCoroutine(Dying());
+        }
     }
 }

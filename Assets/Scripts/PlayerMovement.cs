@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿
+
+
+
+/*This script is abandoned!!! */
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +19,11 @@ public class PlayerMovement : MonoBehaviour
     public float rotateImpact;
     float defaultHeight;
     float walkTime;
+
+
+
+
+    //public GameObject Detect;
     void Start()
     {
         cameraTransform = GetComponent<Transform>();
@@ -22,7 +34,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        
+        //Debug.Log(Vector3.Distance(transform.position,Detect.transform.position));
+
+
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
 

@@ -6,7 +6,7 @@ public class PlayerMovementAbby : MonoBehaviour
 {   
     //public Transform playerTransform;
     Transform cameraTransform;
-    float timerW,timerA,timerS,timerD = 40f;
+ //   float timerW,timerA,timerS,timerD = 40f;
     float defaultHeight;
     float walkTime;
     // Start is called before the first frame update
