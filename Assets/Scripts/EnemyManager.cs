@@ -106,10 +106,11 @@ public class EnemyManager : MonoBehaviour
         {
             if(leftover != null)
             Instantiate(leftover, gameObject.transform.position + new Vector3(0f, 0f, 0f), gameObject.transform.rotation);
-            Destroy(gameObject);
-            // Starts the dying sprites
-            
+            FinalSceneUIManager.instance.uisInts[0] += 10; // add 100% to secret entered
             StartCoroutine(Dying());
+            Destroy(gameObject);
+            
+            
         }
 
       
@@ -148,7 +149,7 @@ public class EnemyManager : MonoBehaviour
     {
         shootingRunning = true;
         yield return new WaitForSeconds(shootFrequency);
-        Instantiate(bullet, gameObject.transform.position + new Vector3(1f,0f,0f), gameObject.transform.rotation);
+        Instantiate(bullet, gameObject.transform.position + new Vector3(6f,0f,0f), gameObject.transform.rotation);
         shootingRunning = false;
     }
 

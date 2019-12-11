@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine.UI;
 
 public class PickupManager : MonoBehaviour
@@ -13,6 +13,8 @@ public class PickupManager : MonoBehaviour
 
     public bool acidStart; //For the corotine that starts the damage of the player.
 
+    public float timePassed;
+
     /*Data for this script only!!!*/
     //private int ammo; 
     //private int ammo2; 
@@ -23,11 +25,13 @@ public class PickupManager : MonoBehaviour
     void Start()
     {
 
-        PlayerShooting.myGun = (Guns)AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/Pistol.asset", typeof(Guns));
+        //PlayerShooting.myGun = Resources.Load<Guns>("Pistol"); //(Guns)AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/Pistol.asset", typeof(Guns));
         PlayerDataHolder.me.ammo = 50;
         PlayerDataHolder.me.ammo2 = 0;
         PlayerDataHolder.me.health = 100;
         PlayerDataHolder.me.armor = 0;
+        PlayerShooting.myGun = weapon[1];
+        weaponImage.sprite = PlayerShooting.myGun.idle;
         UIManager.me.UnlockPistol();
     }
 
@@ -40,6 +44,8 @@ public class PickupManager : MonoBehaviour
     private void Update()
     {
         SwapGun();
+        timePassed += Time.deltaTime;
+       
     }
 
     //private void LateUpdate()
@@ -113,6 +119,7 @@ public class PickupManager : MonoBehaviour
         print(other.gameObject.name);
         if (other.gameObject.name.Contains("Weapon"))
         {
+            FinalSceneUIManager.instance.uisInts[1] += 10; // add 10% to items gained
             if (other.gameObject.name.Contains("Pistol"))
             {
                 UIManager.me.UnlockPistol();
@@ -153,6 +160,7 @@ public class PickupManager : MonoBehaviour
 
 		if (other.gameObject.name.Contains("Armor")) //green armor 100 at most, most armor 1(max 200), blue armor (max 200)
 		{
+            FinalSceneUIManager.instance.uisInts[1] += 10; // add 10% to items gained
             if (other.gameObject.name.Contains("Green")&& PlayerDataHolder.me.armor<=100)
             {
                 PlayerDataHolder.me.armor = 100;
@@ -176,17 +184,23 @@ public class PickupManager : MonoBehaviour
 
         if (other.gameObject.name.Contains("Health"))
 		{
-            if (other.gameObject.name.Contains("Health"))
+            FinalSceneUIManager.instance.uisInts[1] += 10; // add 10% to items gained
+            if (other.gameObject.name.Contains("Bonus"))
             {
-
+                PlayerDataHolder.me.health += 5;
             }
-            PlayerDataHolder.me.health += other.gameObject.GetComponent<GunHealthManager>().thisHealth.restoreHealth;
+            if (other.gameObject.name.Contains("Kits"))
+            {
+                PlayerDataHolder.me.health = 100;
+            }
+
             Destroy(other.gameObject);
             SoundMan.me.ItemPickUp(transform.position);
         }
 
         if (other.gameObject.name.Contains("Bullet"))
         {
+            FinalSceneUIManager.instance.uisInts[1] += 10; // add 10% to items gained
             if (PlayerDataHolder.me.armor > 0)
             {
                 PlayerDataHolder.me.armor -= 10;
@@ -203,6 +217,7 @@ public class PickupManager : MonoBehaviour
 
         if (other.gameObject.name.Contains("Ammo"))
         {
+            FinalSceneUIManager.instance.uisInts[1] += 10; // add 10% to items gained
             if (other.gameObject.name.Contains("Pistol"))
             {
                 if (other.gameObject.name.Contains("Clip"))
@@ -230,9 +245,19 @@ public class PickupManager : MonoBehaviour
                     SoundMan.me.ItemPickUp(transform.position);
                 }
             }
-
             Destroy(other.gameObject);
         }
+        if (other.gameObject.name.Contains("SecretCollider"))
+        {
+            FinalSceneUIManager.instance.uisInts[0] += 10; // add 10% to enemies killed
+        }
+
+        if (other.gameObject.name.Contains("FinalEnters"))
+        {
+            FinalSceneUIManager.instance.uisInts[3] = (int)timePassed; // counting the time since the begining
+            FinalSceneUIManager.instance.canShow = true;
+        }
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -248,7 +273,8 @@ public class PickupManager : MonoBehaviour
     {
         acidStart = true;
         yield return new WaitForSeconds(1);
-        PlayerDataHolder.me.health -= 2;
+        PlayerDataHolder.me.health -= 10;
+        SoundMan.me.PlayerInjured(transform.position);
         acidStart = false;
     }
 }
