@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -17,10 +18,11 @@ public class EnemyManager : MonoBehaviour
     Enemies does NOT open doors.
     */
     public SpriteRenderer thisEnemy;
-    public Sprite[] walk;
-    public Sprite[] dying;
+   
+   
     public Sprite[] walkLeft;
-    public Sprite[] walkRight; 
+    public Sprite[] walkRight;
+    public Animator enemyAnim; 
     
     private Rigidbody rgbd;
     private bool shootingRunning;
@@ -48,6 +50,10 @@ public class EnemyManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         rgbd = gameObject.GetComponent<Rigidbody>();
         randomizer = Random.Range(0, 1f);
+        
+        enemyAnim.SetBool("Idle", true);
+        enemyAnim.SetBool("Walking", false);
+       
     }
 
     void Update()
@@ -66,7 +72,7 @@ public class EnemyManager : MonoBehaviour
                 Instantiate(bullet, gameObject.transform.position + new Vector3(3f, 0f, 0f), gameObject.transform.rotation);
                 firstBullet = false;
             }
-            if (!shootingRunning && timer > 4 && timer < 5)
+            if (!shootingRunning && (timer > 4 && timer < 5))
             {
                 StartCoroutine(Shooting());
             }
@@ -76,28 +82,22 @@ public class EnemyManager : MonoBehaviour
             if(leftover != null)
             Instantiate(leftover, gameObject.transform.position + new Vector3(0f, 0f, 0f), gameObject.transform.rotation);
             FinalSceneUIManager.instance.uisInts[0] += 10; // add 100% to secret entered
-            StartCoroutine(Dying());
             Destroy(gameObject);
-            
-            
+
         }
 
-        if (timer > 4 && timer < 5)
-        {
-            
-            StartCoroutine(Walking());
-        }
        
 
-        if (timer < 2)
+        if (timer > (4 + randomizer) && timer < (5 + randomizer))
         {
-            StopCoroutine(Walking());
-       //   StopAllCoroutines();
-            StartCoroutine(WalkingLeft()); 
+            enemyAnim.SetBool("Walking", true);
+        }
+        else
+        {
+            enemyAnim.SetBool("Walking", false);
         }
 
-
-        
+     
     }
 
     void Movement()
@@ -111,7 +111,10 @@ public class EnemyManager : MonoBehaviour
         if (timer > (4+randomizer) && timer < (5+randomizer))
             rgbd.AddRelativeForce(Vector3.forward * movSpeed);
 
-
+        
+       
+        
+        
         if(timer > (6+randomizer)) //Intentionally leaves 1 second to pause
         {
             timer = 0;
@@ -120,6 +123,8 @@ public class EnemyManager : MonoBehaviour
         {
             rgbd.velocity = rgbd.velocity.normalized * 1.5f;
         }
+        
+        
     }
 
     IEnumerator Shooting()
@@ -131,68 +136,7 @@ public class EnemyManager : MonoBehaviour
     }
 
 
-    IEnumerator Walking()
-    {
-        int i; 
-        i = 0; 
-        var waitTime = .25f; 
-        while (i < walk.Length)
-        {
+  
 
-            thisEnemy.sprite = walk[i];
-            i++; 
-            yield return new WaitForSeconds(waitTime);
-            yield return 5; 
-           
-        }
-    }
-
-    IEnumerator WalkingLeft()
-    {
-        int i; 
-        i = 0; 
-        var waitTime = .25f; 
-        while (i < walkLeft.Length)
-        {
-
-            thisEnemy.sprite = walkLeft[i];
-            i++; 
-            yield return new WaitForSeconds(waitTime);
-            yield return 0; 
-           
-        }
-    }
-
-    IEnumerator WalkingRight()
-    {
-        int i; 
-        i = 0; 
-        var waitTime = .25f; 
-        while (i < walkRight.Length)
-        {
-
-            thisEnemy.sprite = walkRight[i];
-            
-            i++; 
-            yield return new WaitForSeconds(waitTime);
-            yield return 0; 
-           
-        }
-    }
-
-    IEnumerator Dying()
-
-    {
-        int i;
-        i = 0;
-        var waitTime = .25f;
-        while (i < dying.Length)
-        {
-            thisEnemy.sprite = dying[i];
-            i++;
-            yield return new WaitForSeconds(waitTime); 
-            yield return 0;
-       // StopCoroutine(Dying());
-        }
-    }
+    
 }
