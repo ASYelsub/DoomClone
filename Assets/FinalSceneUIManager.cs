@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class FinalSceneUIManager : MonoBehaviour
 {
     public static FinalSceneUIManager instance;
@@ -10,12 +10,14 @@ public class FinalSceneUIManager : MonoBehaviour
     public int[] uisInts; //actual numbers that serve to the stats
     public bool canShow;
     public Animation anim;
+    private bool isFinished;
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this.GetComponent<FinalSceneUIManager>();
         anim = this.GetComponent<Animation>();
+        isFinished = false;
     }
 
     // Update is called once per frame
@@ -29,7 +31,18 @@ public class FinalSceneUIManager : MonoBehaviour
         {
             anim.Play();
             canShow = false;
+            isFinished = true;
         }
 
+        if (!anim.isPlaying&&isFinished)
+        {
+            Time.timeScale = 0;
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 }

@@ -20,7 +20,7 @@ public class PickupManager : MonoBehaviour
     //private int ammo2; 
     //private int health; 
     //private int armor; 
-
+    private bool endSOnce = true;
     
     void Start()
     {
@@ -39,6 +39,11 @@ public class PickupManager : MonoBehaviour
     {
         //DataExchangeOut();
         ChangeUI();
+        if (PlayerDataHolder.me.health < 0 && endSOnce )
+        {
+            FinalSceneUIManager.instance.canShow = true;
+            endSOnce = false;
+        }
     }
 
     private void Update()
