@@ -106,12 +106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisEnemy: {fileID: 1906506077}
-  walk:
-  - {fileID: 21300000, guid: 383bc3322c1054aa8b23b2bf0a949c5a, type: 3}
-  - {fileID: 21300020, guid: 383bc3322c1054aa8b23b2bf0a949c5a, type: 3}
-  - {fileID: 21300010, guid: 383bc3322c1054aa8b23b2bf0a949c5a, type: 3}
-  - {fileID: 21300020, guid: 383bc3322c1054aa8b23b2bf0a949c5a, type: 3}
-  dying: []
   walkLeft:
   - {fileID: 21300024, guid: 383bc3322c1054aa8b23b2bf0a949c5a, type: 3}
   - {fileID: 21300004, guid: 383bc3322c1054aa8b23b2bf0a949c5a, type: 3}
@@ -119,6 +113,7 @@ MonoBehaviour:
   - {fileID: 21300004, guid: 383bc3322c1054aa8b23b2bf0a949c5a, type: 3}
   - {fileID: 21300034, guid: 383bc3322c1054aa8b23b2bf0a949c5a, type: 3}
   walkRight: []
+  enemyAnim: {fileID: 0}
   movSpeed: 5
   shootFrequency: 4
   HP: 3
@@ -168,8 +163,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4372773, y: 0.59276474, z: 2.472233}
-  m_Center: {x: -0.0024834634, y: 0.017358145, z: 0.02804935}
+  m_Size: {x: 0.43727756, y: 0.59276474, z: 7.7553988}
+  m_Center: {x: -0.0024834953, y: 0.017358135, z: 0.08535671}
 --- !u!212 &1906506077
 SpriteRenderer:
   m_ObjectHideFlags: 0

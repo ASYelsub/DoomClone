@@ -19,7 +19,7 @@ public class BulletMover : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         print(other.name);
-        if(other.name.Contains("surface") || other.name.Contains("Concrete") || other.name.Contains("pCube"))
+        if(other.name.Contains("surface") || other.name.Contains("Concrete") || other.name.Contains("Cube"))
         Destroy(gameObject);
     }
 }
