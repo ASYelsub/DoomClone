@@ -68,7 +68,7 @@ public class PlayerShooting : MonoBehaviour
                 myPos.y = 0;
 
                 Vector3 targetDir = enemyPos-myPos;             //this is the vector between enemy and player
-                float degreeWithin = 40f/(Vector3.Distance(myPos, enemyPos)); //30 is the k 
+                float degreeWithin = 45f/(Vector3.Distance(myPos, enemyPos)); //30 is the k 
 
                 if(Vector3.Angle(targetDir,transform.forward)<degreeWithin){  
                     if(!Physics.Linecast(transform.position,enemy.transform.position,obstacleLayer) ){ // it detects if there are obstacles between them
